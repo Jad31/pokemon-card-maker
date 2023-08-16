@@ -1,0 +1,197 @@
+* {
+	padding: 0;
+	margin: 0;
+	box-sizing: border-box;
+}
+
+html, body {
+	height: 100%;
+}
+
+// body {
+// 	display: flex;
+// 	align-content: center;
+// 	justify-content: center;
+// 	align-items: center;
+// 	background: #DCDCDC;
+// }
+
+.pokemon-card {
+	display: grid;
+	width: 450px;
+	min-width: 450px;
+	height: 672px;
+	border-radius: 15px;
+	border: 15px solid #e7c30d;
+	overflow: hidden;
+	font-family: arial, sans-serif;
+	// box-shadow: 20px 12px 20px 0px black;
+	position: relative;
+	&:before {
+		content: "";
+		position: absolute;
+		top: 0;
+		left: 0;
+		width: 100%;
+		height: 100%;
+		background-image: url('./../assets/background.jpg');
+		background-size: cover;
+		z-index: -1;
+		filter: hue-rotate(140deg);
+	}
+}
+
+.title-row {
+	display: grid;
+	grid-template-areas:
+		"rarity rarity rarity"
+		"name health type";
+	grid-template-columns: auto 75px 25px;
+	grid-template-rows: 15px 25px;
+	margin: 5px 20px 0px 20px;
+	align-items: center;
+	column-gap: 5px;
+
+	.rarity {
+		grid-area: rarity;
+		font-weight: bold;
+		font-size: 12px;
+	}
+	.name {
+		grid-area: name;
+	}
+	.health {
+		grid-area: health;
+		font-weight: bold;
+		font-size: 20px;
+		text-align: right;
+		color: red;
+	}
+	.type {
+		grid-area: type;
+		width: 100%;
+	}
+}
+
+.character-img{
+	margin: 0 20px;
+	height: 270px;
+	border: 5px solid yellow;
+	overflow: hidden;
+	img {
+		height: 100%;
+	}
+}
+
+.character-meta{
+	background-color: yellow;
+	height: 25px;
+	margin: 0 40px;
+	display: grid;
+	align-items: center;
+	p {
+		text-align: center;
+		font-size: 12px;
+		font-weight: bold;
+		font-style: italic;
+	}
+}
+
+.character-ability{
+	height: 75px;
+	display: grid;
+	grid-template-columns: 65px auto 65px;
+	gap: 5px;
+	align-items: center;
+	justify-items: center;
+	margin: 0 10px;
+	border-bottom: 2px solid black;
+
+	.ability-cost{
+		img {
+			width: 30px;
+		}
+	}
+	.ability-description {
+		text-align: center;
+		.ability-name {
+			font-weight: bold;
+			height: 16px;
+			float: left;
+		}
+		p {
+			&:before {
+				content: '\00a0';
+			}
+			img {
+				height: 18px;
+				vertical-align: middle;
+			}
+			text-align: left;
+		}
+	}
+	.ability-damage {
+		font-weight: bold;
+		font-size: 30px;
+	}
+}
+
+.character-stats{
+	height: 45px;
+	display: grid;
+	grid-template-columns: repeat(3, 1fr);
+	.character-stat {
+		display: grid;
+		justify-items: center;
+		grid-template-rows: 20px 25px;
+		p {
+			font-size: 12px;
+			font-weight: bold;
+		}
+	}
+}
+
+.character-description{
+	height: 40px;
+	margin: 0 20px;
+	border: 2px solid yellow;
+	display: grid;
+	align-items: center;
+	p {
+		font-style: italic;
+		font-size: 12px;
+		padding: 0 10px;
+		font-weight: bold;
+	}
+}
+
+.card-details{
+	height: 15px;
+	display: grid;
+	grid-template-columns: 95px auto 45px;
+	font-size: 9px;
+	align-items: center;
+	margin: 0 5px;
+	.artist {
+		font-weight: bold;
+	}
+	.company {
+		text-align: center;
+	}
+	.collector-card-number {
+		font-weight: bold;
+		text-align: right;
+		display: flex;
+		align-items: center;
+		&:after {
+			content: "⬤";
+			font-size: 9px;
+			line-height: 9px;
+			padding: 0 5px;
+		}
+	}
+}
+
+.element-icon {
+	height: 100%;
+}
