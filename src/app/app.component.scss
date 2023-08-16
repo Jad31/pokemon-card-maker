@@ -4,19 +4,18 @@
 	box-sizing: border-box;
 }
 
-html, body {
-	height: 100%;
+.split {
+    display: grid;
+    grid-template-columns: 1fr 1fr; /* This creates two columns of equal width */
+    height: 100vh; /* Optional: Take up the full viewport height */
+    width: 100vw; /* Take up the full viewport width */
+	grid-template-areas:
+	"pokemon-card form"
+	"pokemon-card form";
 }
 
-// body {
-// 	display: flex;
-// 	align-content: center;
-// 	justify-content: center;
-// 	align-items: center;
-// 	background: #DCDCDC;
-// }
-
 .pokemon-card {
+	grid-area: pokemon-card;
 	display: grid;
 	width: 450px;
 	min-width: 450px;
@@ -194,4 +193,8 @@ html, body {
 
 .element-icon {
 	height: 100%;
+}
+
+.form {
+	grid-area: form;
 }
