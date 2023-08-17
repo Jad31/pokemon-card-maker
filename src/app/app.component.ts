@@ -1,18 +1,15 @@
-import { Component } from '@angular/core';
-import { NgOptimizedImage } from '@angular/common'
-import {DownloadCardComponent} from '@team-booster-pack/download-card'
+import { Component, inject } from '@angular/core';
+import { NgOptimizedImage } from '@angular/common';
+import { DownloadCardComponent } from '@team-booster-pack/download-card';
+import { FormComponent, FormService } from '@team-booster-pack/form';
 
 @Component({
   standalone: true,
-  imports: [NgOptimizedImage, DownloadCardComponent],
+  imports: [NgOptimizedImage, FormComponent, DownloadCardComponent],
   selector: 'team-booster-pack-root',
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.scss'],
 })
 export class AppComponent {
-  title = 'team-booster-pack';
-  rarity = 'basic';
-  name = 'Jad';
-  health = 100;
-  characterMeta = 'Frontend Developer and DevOps';
+  formService = inject(FormService);
 }

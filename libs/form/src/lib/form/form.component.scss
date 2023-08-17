@@ -1,0 +1,12 @@
+form {
+  margin-top: 50px;
+}
+
+p {
+  display: block; // Makes the form fields block-level elements
+  margin-bottom: 20px; // Adds some space between each field
+}
+
+mat-form-field {
+  margin: 10px;
+}

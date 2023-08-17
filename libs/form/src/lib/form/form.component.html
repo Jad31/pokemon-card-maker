@@ -1,0 +1,207 @@
+<mat-progress-bar mode="determinate" [value]="step * 20"></mat-progress-bar>
+<mat-accordion>
+  <!-- Basic Information -->
+  <mat-expansion-panel [expanded]="step === 0" (opened)="setStep(0)" hideToggle>
+    <mat-expansion-panel-header>
+      <mat-panel-title> Basic Information </mat-panel-title>
+    </mat-expansion-panel-header>
+
+    <mat-form-field appearance="fill">
+      <mat-label>Name</mat-label>
+      <input
+        matInput
+        #name
+        [value]="formService.name()"
+        (input)="formService.name.set(name.value)"
+      />
+    </mat-form-field>
+
+    <mat-form-field appearance="fill">
+      <mat-label>Type</mat-label>
+      <input
+        matInput
+        #type
+        [value]="formService.type()"
+        (input)="formService.type.set(type.value)"
+      />
+    </mat-form-field>
+
+    <mat-form-field appearance="fill">
+      <mat-label>Stage</mat-label>
+      <input
+        matInput
+        #stage
+        [value]="formService.stage()"
+        (input)="formService.stage.set(stage.value)"
+      />
+    </mat-form-field>
+
+    <mat-form-field appearance="fill">
+      <mat-label>Health</mat-label>
+      <input
+        matInput
+        #health
+        [value]="formService.health()"
+        (input)="formService.health.set(health.value)"
+      />
+    </mat-form-field>
+    <mat-action-row>
+      <button mat-button color="primary" (click)="nextStep()">Next</button>
+    </mat-action-row>
+  </mat-expansion-panel>
+
+  <!-- Feature One -->
+  <mat-expansion-panel [expanded]="step === 1" (opened)="setStep(1)" hideToggle>
+    <mat-expansion-panel-header>
+      <mat-panel-title> Feature One </mat-panel-title>
+    </mat-expansion-panel-header>
+
+    <mat-form-field appearance="fill">
+      <mat-label>Ability Name</mat-label>
+      <input
+        matInput
+        #abilityOneName
+        [value]="formService.abilityOneName()"
+        (input)="formService.abilityOneName.set(abilityOneName.value)"
+      />
+    </mat-form-field>
+
+    <mat-form-field appearance="fill">
+      <mat-label>Description</mat-label>
+      <input
+        matInput
+        #abilityOneDescription
+        [value]="formService.abilityOneDescription()"
+        (input)="
+          formService.abilityOneDescription.set(abilityOneDescription.value)
+        "
+      />
+    </mat-form-field>
+    <mat-action-row>
+      <button mat-button color="primary" (click)="nextStep()">Next</button>
+    </mat-action-row>
+  </mat-expansion-panel>
+
+  <!-- Feature Two -->
+  <mat-expansion-panel [expanded]="step === 2" (opened)="setStep(2)" hideToggle>
+    <mat-expansion-panel-header>
+      <mat-panel-title> Feature Two </mat-panel-title>
+    </mat-expansion-panel-header>
+
+    <mat-form-field appearance="fill">
+      <mat-label>Ability Name</mat-label>
+      <input
+        matInput
+        #abilityTwoName
+        [value]="formService.abilityTwoName()"
+        (input)="formService.abilityTwoName.set(abilityTwoName.value)"
+      />
+    </mat-form-field>
+
+    <mat-form-field appearance="fill">
+      <mat-label>Description</mat-label>
+      <input
+        matInput
+        #abilityTwoDescription
+        [value]="formService.abilityTwoDescription()"
+        (input)="
+          formService.abilityTwoDescription.set(abilityTwoDescription.value)
+        "
+      />
+    </mat-form-field>
+    <mat-action-row>
+      <button mat-button color="primary" (click)="nextStep()">Next</button>
+    </mat-action-row>
+  </mat-expansion-panel>
+
+  <!-- Weakness, Resistance, Retreat -->
+  <mat-expansion-panel [expanded]="step === 3" (opened)="setStep(3)" hideToggle>
+    <mat-expansion-panel-header>
+      <mat-panel-title> Weakness, Resistance, and Retreat </mat-panel-title>
+    </mat-expansion-panel-header>
+
+    <mat-form-field appearance="fill">
+      <mat-label>Weakness</mat-label>
+      <input
+        matInput
+        #weakness
+        [value]="formService.weakness()"
+        (input)="formService.weakness.set(weakness.value)"
+      />
+    </mat-form-field>
+
+    <mat-form-field appearance="fill">
+      <mat-label>Resistance</mat-label>
+      <input
+        matInput
+        #resistance
+        [value]="formService.resistance()"
+        (input)="formService.resistance.set(resistance.value)"
+      />
+    </mat-form-field>
+
+    <mat-form-field appearance="fill">
+      <mat-label>Retreat</mat-label>
+      <input
+        matInput
+        #retreat
+        [value]="formService.retreat()"
+        (input)="formService.retreat.set(retreat.value)"
+      />
+    </mat-form-field>
+    <mat-action-row>
+      <button mat-button color="primary" (click)="nextStep()">Next</button>
+    </mat-action-row>
+  </mat-expansion-panel>
+
+  <!-- Additionals -->
+  <mat-expansion-panel [expanded]="step === 4" (opened)="setStep(4)" hideToggle>
+    <mat-expansion-panel-header>
+      <mat-panel-title> Additional Information </mat-panel-title>
+    </mat-expansion-panel-header>
+
+    <mat-form-field appearance="fill">
+      <mat-label>Upper Text</mat-label>
+      <input
+        matInput
+        #upperText
+        [value]="formService.upperText()"
+        (input)="formService.upperText.set(upperText.value)"
+      />
+    </mat-form-field>
+
+    <mat-form-field appearance="fill">
+      <mat-label>Lower Text</mat-label>
+      <input
+        matInput
+        #lowerText
+        [value]="formService.lowerText()"
+        (input)="formService.lowerText.set(lowerText.value)"
+      />
+    </mat-form-field>
+
+    <mat-form-field appearance="fill">
+      <mat-label>Illustrator</mat-label>
+      <input
+        matInput
+        #illustrator
+        [value]="formService.illustrator()"
+        (input)="formService.illustrator.set(illustrator.value)"
+      />
+    </mat-form-field>
+
+    <mat-form-field appearance="fill">
+      <mat-label>Company</mat-label>
+      <input
+        matInput
+        #company
+        [value]="formService.company()"
+        (input)="formService.company.set(company.value)"
+      />
+    </mat-form-field>
+
+    <mat-action-row>
+      <button mat-button color="primary" (click)="nextStep()">Next</button>
+    </mat-action-row>
+  </mat-expansion-panel>
+</mat-accordion>

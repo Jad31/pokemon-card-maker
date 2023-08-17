@@ -1,12 +1,13 @@
 <div class="split">
   <div class="form">
+    <team-booster-pack-form></team-booster-pack-form>
     <team-booster-pack-download-card></team-booster-pack-download-card>
   </div>
   <div id="pokemon-card" class="pokemon-card">
     <section class="title-row">
-      <p class="rarity">{{ rarity }}</p>
-      <h1 class="name">{{ name }}</h1>
-      <p class="health">{{ health }}</p>
+      <p class="rarity">{{ formService.stage() }}</p>
+      <h1 class="name">{{ formService.name() }}</h1>
+      <p class="health">{{ formService.health() }}</p>
       <img class="element-icon" src="assets/fire.png" />
     </section>
 
@@ -17,7 +18,7 @@
     </section>
 
     <section class="character-meta">
-      <p>{{ characterMeta }}</p>
+      <p>{{ formService.upperText() }}</p>
     </section>
 
     <section class="character-ability">
@@ -25,7 +26,7 @@
         <img class="element-icon" src="assets/fire.png" />
       </span>
       <span class="ability-description">
-        <span class="ability-name">Scratch</span>
+        <span class="ability-name">{{ formService.abilityOneName() }}</span>
       </span>
       <p class="ability-damage">10</p>
     </section>
@@ -37,10 +38,9 @@
         <img class="element-icon" src="assets/fire.png" />
       </span>
       <span class="ability-description">
-        <span class="ability-name">Ember</span>
+        <span class="ability-name">{{ formService.abilityTwoName() }}</span>
         <p>
-          Discard 1 <img class="element-icon" src="assets/fire.png" /> Energy
-          card attached to Charmander in order to use this attack.
+          {{ formService.abilityTwoDescription() }}
         </p>
       </span>
       <p class="ability-damage">30</p>
@@ -49,29 +49,29 @@
     <section class="character-stats">
       <span class="character-stat">
         <p>weakness</p>
-        <img class="element-icon" src="assets/fire.png" />
+        <p>{{ formService.weakness() }}</p>
+        <!-- <img class="element-icon" src="assets/fire.png" /> -->
       </span>
       <span class="character-stat">
         <p>resistance</p>
+        <p>{{ formService.resistance() }}</p>
       </span>
       <span class="character-stat">
         <p>retreat cost</p>
-        <img class="element-icon" src="assets/fire.png" />
+        <p>{{ formService.retreat() }}</p>
+        <!-- <img class="element-icon" src="assets/fire.png" /> -->
       </span>
     </section>
 
     <section class="character-description">
       <p>
-        Obviously prefers hot places. If it gets caught in the rain, steam is
-        said to sput from the tip of its tail. LV.10 #4
+        {{ formService.lowerText() }}
       </p>
     </section>
 
     <section class="card-details">
-      <p class="artist">LiLus. Mitsuhire Arita</p>
-      <p class="company">
-        &copy;1995, 96, 96 Nintendo, Creatures, GAMEFREAK. &copy;1999 Wizards.
-      </p>
+      <p class="artist">{{ formService.illustrator() }}</p>
+      <p class="company">{{ formService.company() }}</p>
       <p class="collector-card-number">46/120</p>
     </section>
     <div></div>
