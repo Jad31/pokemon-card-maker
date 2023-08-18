@@ -4,17 +4,20 @@ import { Injectable, signal } from '@angular/core';
   providedIn: 'root',
 })
 export class FormService {
+  formAbilityOneCost = 0;
+  abilityCostOptions: number[] = [0, 1, 2, 3, 4];
+
   name = signal<string>('Jad');
   type = signal<string>('Fire');
   stage = signal<string>('Basic');
-  health = signal<string>('100');
+  health = signal<number>(100);
   abilityOneName = signal<string>('Ability Name');
   abilityOneDescription = signal<string>('Description');
-  abilityOneCost = signal<string>('Description');
+  abilityOneCost = signal<number>(this.formAbilityOneCost);
   abilityOneDamage = signal<string>('Description');
   abilityTwoName = signal<string>('Ability Name');
   abilityTwoDescription = signal<string>('Description');
-  abilityTwoCost = signal<string>('Description');
+  abilityTwoCost = signal<number>(0);
   abilityTwoDamage = signal<string>('Description');
   weakness = signal<string>('To good');
   resistance = signal<string>('Pressure');

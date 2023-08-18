@@ -42,7 +42,8 @@
         matInput
         #health
         [value]="formService.health()"
-        (input)="formService.health.set(health.value)"
+        (input)="formService.health.set(+health.value)"
+        type="number"
       />
     </mat-form-field>
     <mat-action-row>
@@ -77,6 +78,31 @@
         "
       />
     </mat-form-field>
+
+    <mat-form-field appearance="fill">
+      <mat-label>Cost</mat-label>
+      <mat-select
+        #abilityOneCost
+        (selectionChange)="formService.abilityOneCost.set(abilityOneCost.value)"
+      >
+        <mat-option
+          *ngFor="let cost of formService.abilityCostOptions"
+          [value]="cost"
+        >
+          {{ cost }}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+
+    <mat-form-field appearance="fill">
+      <mat-label>Damage</mat-label>
+      <input
+        matInput
+        #abilityOneDamage
+        [value]="formService.abilityOneDamage()"
+        (input)="formService.abilityOneDamage.set(abilityOneDamage.value)"
+      />
+    </mat-form-field>
     <mat-action-row>
       <button mat-button color="primary" (click)="nextStep()">Next</button>
     </mat-action-row>
@@ -109,6 +135,30 @@
         "
       />
     </mat-form-field>
+    <mat-form-field appearance="fill">
+      <mat-label>Cost</mat-label>
+      <mat-select>
+        <mat-option
+          *ngFor="let cost of formService.abilityCostOptions"
+          [value]="cost"
+        >
+          {{ cost }}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+
+    <mat-form-field appearance="fill">
+      <mat-label>Damage</mat-label>
+      <input
+        matInput
+        #abilityTwoDamage
+        [value]="formService.abilityTwoDamage()"
+        (input)="formService.abilityTwoDamage.set(abilityTwoDamage.value)"
+      />
+    </mat-form-field>
+    <mat-action-row>
+      <button mat-button color="primary" (click)="nextStep()">Next</button>
+    </mat-action-row>
     <mat-action-row>
       <button mat-button color="primary" (click)="nextStep()">Next</button>
     </mat-action-row>

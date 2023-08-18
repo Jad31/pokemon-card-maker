@@ -7,7 +7,7 @@
     <section class="title-row">
       <p class="rarity">{{ formService.stage() }}</p>
       <h1 class="name">{{ formService.name() }}</h1>
-      <p class="health">{{ formService.health() }}</p>
+      <p class="health">{{ formService.health() }} HP</p>
       <img class="element-icon" src="assets/fire.png" />
     </section>
 
@@ -23,7 +23,11 @@
 
     <section class="character-ability">
       <span class="ability-cost">
-        <img class="element-icon" src="assets/fire.png" />
+        <span *ngFor="let cost of formService.abilityCostOptions; index as i">
+          <ng-container *ngIf="i < formService.abilityOneCost()">
+            <img class="element-icon" src="assets/fire.png" />
+          </ng-container>
+        </span>
       </span>
       <span class="ability-description">
         <span class="ability-name">{{ formService.abilityOneName() }}</span>

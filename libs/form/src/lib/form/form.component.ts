@@ -12,6 +12,7 @@ import { MatExpansionModule } from '@angular/material/expansion';
 import { FormService } from './form.service';
 import { MatButtonModule } from '@angular/material/button';
 import { MatProgressBarModule } from '@angular/material/progress-bar';
+import { MatSelectModule } from '@angular/material/select';
 
 @Component({
   selector: 'team-booster-pack-form',
@@ -24,6 +25,7 @@ import { MatProgressBarModule } from '@angular/material/progress-bar';
     MatExpansionModule,
     MatButtonModule,
     MatProgressBarModule,
+    MatSelectModule,
   ],
   templateUrl: './form.component.html',
   styleUrls: ['./form.component.scss'],
