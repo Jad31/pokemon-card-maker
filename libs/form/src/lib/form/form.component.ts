@@ -1,6 +1,7 @@
 import {
   ChangeDetectionStrategy,
   Component,
+  OnInit,
   ViewEncapsulation,
   inject,
 } from '@angular/core';
@@ -32,9 +33,25 @@ import { MatSelectModule } from '@angular/material/select';
   encapsulation: ViewEncapsulation.None,
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class FormComponent {
+export class FormComponent implements OnInit {
   formService = inject(FormService);
   step = 0;
+
+  theme = 'light';
+
+  ngOnInit() {
+    this.switchTheme(this.theme);
+  }
+
+  switchTheme(theme: string) {
+    if (theme === 'dark') {
+      document.body.classList.remove('light-theme');
+      document.body.classList.add('dark-theme');
+    } else {
+      document.body.classList.remove('dark-theme');
+      document.body.classList.add('light-theme');
+    }
+  }
 
   setStep(index: number) {
     this.step = index;

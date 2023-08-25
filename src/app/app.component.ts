@@ -1,5 +1,5 @@
 import { Component, inject } from '@angular/core';
-import { NgOptimizedImage, NgForOf, NgIf } from '@angular/common';
+import { NgOptimizedImage, NgForOf, NgIf, NgClass } from '@angular/common';
 import { DownloadCardComponent } from '@team-booster-pack/download-card';
 import { FormComponent, FormService } from '@team-booster-pack/form';
 
@@ -11,6 +11,7 @@ import { FormComponent, FormService } from '@team-booster-pack/form';
     DownloadCardComponent,
     NgForOf,
     NgIf,
+    NgClass,
   ],
   selector: 'team-booster-pack-root',
   templateUrl: './app.component.html',

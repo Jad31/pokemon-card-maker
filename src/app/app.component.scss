@@ -20,8 +20,9 @@
   width: 450px;
   min-width: 450px;
   height: 672px;
+  margin: 20px;
   border-radius: 15px;
-  border: 15px solid #e7c30d;
+  border: 15px solid #ffd65a;
   overflow: hidden;
   font-family: arial, sans-serif;
   // box-shadow: 20px 12px 20px 0px black;
@@ -33,10 +34,38 @@
     left: 0;
     width: 100%;
     height: 100%;
-    background-image: url('./../assets/background.jpg');
+    background-image: url('./../assets/background-light.jpg');
     background-size: cover;
     z-index: -1;
     filter: hue-rotate(140deg);
+  }
+}
+
+.pokemon-card.Light {
+  &:before {
+    background-image: url('./../assets/background-light.jpg');
+  }
+  .title-row .health {
+    color: black;
+  }
+  /* Add any other light specific styles here... */
+}
+
+/* Dark Theme */
+.pokemon-card.Dark {
+  &:before {
+    background-image: url('./../assets/background-dark.jpg'); // Adjust this to your dark theme background
+  }
+  color: #eaeaea; // Assuming you want #eaeaea color in dark theme
+  .title-row .health {
+    color: #eaeaea; // Assuming you want #eaeaea color in dark theme
+  }
+  /* Add any other dark specific styles here... */
+  .character-meta {
+    color: black;
+  }
+  .character-description {
+    background-image: url('./../assets/background-dark.jpg');
   }
 }
 
@@ -48,7 +77,7 @@
   grid-template-columns: auto 75px 25px;
   grid-template-rows: 15px 25px;
   margin: 5px 20px 0px 20px;
-  align-items: center;
+  // align-items: center;
   column-gap: 5px;
 
   .rarity {
@@ -64,31 +93,57 @@
     font-weight: bold;
     font-size: 20px;
     text-align: right;
-    color: red;
+    color: black;
   }
   .type {
     grid-area: type;
     width: 100%;
   }
 }
-
-.character-img {
+.character-img-background {
   margin: 0 20px;
   height: 270px;
-  border: 5px solid yellow;
+  padding: 5px;
+  background: linear-gradient(
+    -60deg,
+    #ceb02c,
+    #d3af5a,
+    #fef0b2,
+    #e8d079,
+    #d7b154,
+    #d7b442
+  );
+}
+.character-img {
+  height: 100%;
   overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   img {
     height: 100%;
   }
 }
 
 .character-meta {
-  background-color: yellow;
   height: 25px;
   margin: 0 40px;
   display: grid;
   align-items: center;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  background: linear-gradient(
+    to right,
+    #ceb02c,
+    #d3af5a,
+    #fef0b2,
+    #e8d079,
+    #d7b154,
+    #d7b442
+  );
+
   p {
+    margin-bottom: 0px;
     text-align: center;
     font-size: 12px;
     font-weight: bold;
@@ -108,9 +163,17 @@
 
   .ability-cost {
     img {
+      margin-left: 2px;
       width: 30px;
     }
+    // span:nth-child(3) {
+    // margin-left: 16px;
+    // }
+    // span:nth-child(3) ~ span:nth-child(3) {
+    // margin-left: 0px;
+    // }
   }
+
   .ability-description {
     text-align: center;
     .ability-name {
@@ -150,12 +213,29 @@
   }
 }
 
-.character-description {
+.character-description-background {
   height: 40px;
   margin: 0 20px;
-  border: 2px solid yellow;
+  padding: 2px;
+  background: linear-gradient(
+    -60deg,
+    #ceb02c,
+    #d3af5a,
+    #fef0b2,
+    #e8d079,
+    #d7b154,
+    #d7b442
+  );
+}
+
+.character-description {
+  height: 100%;
+  max-height: 100%;
+  overflow: hidden;
+  text-overflow: ellipsis;
   display: grid;
   align-items: center;
+  background-image: url('./../assets/background-light.jpg');
   p {
     font-style: italic;
     font-size: 12px;
@@ -167,7 +247,7 @@
 .card-details {
   height: 15px;
   display: grid;
-  grid-template-columns: 95px auto 45px;
+  grid-template-columns: 110px auto 110px;
   font-size: 9px;
   align-items: center;
   margin: 0 5px;
@@ -180,7 +260,6 @@
   .collector-card-number {
     font-weight: bold;
     text-align: right;
-    display: flex;
     align-items: center;
     &:after {
       content: '⬤';

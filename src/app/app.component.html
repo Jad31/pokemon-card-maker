@@ -3,19 +3,26 @@
     <team-booster-pack-form></team-booster-pack-form>
     <team-booster-pack-download-card></team-booster-pack-download-card>
   </div>
-  <div id="pokemon-card" class="pokemon-card">
+  <div id="pokemon-card" class="pokemon-card" [ngClass]="formService.type()">
     <section class="title-row">
       <p class="rarity">{{ formService.stage() }}</p>
       <h1 class="name">{{ formService.name() }}</h1>
       <p class="health">{{ formService.health() }} HP</p>
-      <img class="element-icon" src="assets/fire.png" />
+      <div *ngIf="formService.type() === 'Light'; else darkElementIcon">
+        <img class="element-icon" src="assets/bashroom-dark.png" />
+      </div>
+      <ng-template #darkElementIcon>
+        <img class="element-icon" src="assets/bashroom-light.png" />
+      </ng-template>
     </section>
 
-    <section class="character-img">
-      <img src="assets/charmander.jpg" />
-      <!-- <img
-            src="https://www.gamepur.com/files/styles/max_width_770px/public/images/tldr/2018/11/Charmander-2-GameRant.jpg?itok=d-NSYNS5"> -->
-    </section>
+    <div class="character-img-background">
+      <section class="character-img">
+        <img src="assets/jad-chahed.png" />
+        <!-- <img
+              src="https://www.gamepur.com/files/styles/max_width_770px/public/images/tldr/2018/11/Charmander-2-GameRant.jpg?itok=d-NSYNS5"> -->
+      </section>
+    </div>
 
     <section class="character-meta">
       <p>{{ formService.upperText() }}</p>
@@ -25,21 +32,39 @@
       <span class="ability-cost">
         <span *ngFor="let cost of formService.abilityCostOptions; index as i">
           <ng-container *ngIf="i < formService.abilityOneCost()">
-            <img class="element-icon" src="assets/fire.png" />
+            <ng-container
+              *ngIf="formService.type() === 'Light'; else darkElementIcon"
+            >
+              <img class="element-icon" src="assets/bashroom-dark.png" />
+            </ng-container>
+            <ng-template #darkElementIcon>
+              <img class="element-icon" src="assets/bashroom-light.png" />
+            </ng-template>
           </ng-container>
         </span>
       </span>
       <span class="ability-description">
         <span class="ability-name">{{ formService.abilityOneName() }}</span>
+        <p>
+          {{ formService.abilityOneDescription() }}
+        </p>
       </span>
-      <p class="ability-damage">10</p>
+      <p class="ability-damage">{{ formService.abilityOneDamage() }}</p>
     </section>
     <section class="character-ability">
       <span class="ability-cost">
-        <img class="element-icon" src="assets/fire.png" />
-        <img class="element-icon" src="assets/fire.png" />
-        <img class="element-icon" src="assets/fire.png" />
-        <img class="element-icon" src="assets/fire.png" />
+        <span *ngFor="let cost of formService.abilityCostOptions; index as i">
+          <ng-container *ngIf="i < formService.abilityTwoCost()">
+            <ng-container
+              *ngIf="formService.type() === 'Light'; else darkElementIcon"
+            >
+              <img class="element-icon" src="assets/bashroom-dark.png" />
+            </ng-container>
+            <ng-template #darkElementIcon>
+              <img class="element-icon" src="assets/bashroom-light.png" />
+            </ng-template>
+          </ng-container>
+        </span>
       </span>
       <span class="ability-description">
         <span class="ability-name">{{ formService.abilityTwoName() }}</span>
@@ -47,14 +72,14 @@
           {{ formService.abilityTwoDescription() }}
         </p>
       </span>
-      <p class="ability-damage">30</p>
+      <p class="ability-damage">{{ formService.abilityTwoDamage() }}</p>
     </section>
 
     <section class="character-stats">
       <span class="character-stat">
         <p>weakness</p>
         <p>{{ formService.weakness() }}</p>
-        <!-- <img class="element-icon" src="assets/fire.png" /> -->
+        <!-- <img class="element-icon" src="assets/bashroom-dark.png" /> -->
       </span>
       <span class="character-stat">
         <p>resistance</p>
@@ -63,20 +88,24 @@
       <span class="character-stat">
         <p>retreat cost</p>
         <p>{{ formService.retreat() }}</p>
-        <!-- <img class="element-icon" src="assets/fire.png" /> -->
+        <!-- <img class="element-icon" src="assets/bashroom-dark.png" /> -->
       </span>
     </section>
 
-    <section class="character-description">
-      <p>
-        {{ formService.lowerText() }}
-      </p>
-    </section>
+    <div class="character-description-background">
+      <section class="character-description">
+        <p>
+          {{ formService.lowerText() }}
+        </p>
+      </section>
+    </div>
 
     <section class="card-details">
       <p class="artist">{{ formService.illustrator() }}</p>
       <p class="company">{{ formService.company() }}</p>
-      <p class="collector-card-number">46/120</p>
+      <p class="collector-card-number">
+        {{ formService.cardNumber() }}/{{ formService.maxCardNumber }}
+      </p>
     </section>
     <div></div>
   </div>
