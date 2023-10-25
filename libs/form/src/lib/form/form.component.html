@@ -45,15 +45,51 @@
         min="0"
       />
     </mat-form-field>
+
+    <!-- <mat-form-field appearance="fill">
+      <mat-label>Image</mat-label>
+      <input
+        matInput
+        #characterImage
+        type="file"
+        (change)="fileChangeEvent($event)"
+        [value]="formService.characterImage()"
+        (input)="formService.characterImage.set(characterImage.value)"
+      />
+    </mat-form-field> -->
+    <mat-action-row>
+      <button mat-button color="primary" (click)="nextStep()">Next</button>
+    </mat-action-row>
+  </mat-expansion-panel>
+
+  <!-- Picture -->
+
+  <mat-expansion-panel [expanded]="step === 1" (opened)="setStep(1)" hideToggle>
+    <mat-expansion-panel-header>
+      <mat-panel-title> Picture </mat-panel-title>
+    </mat-expansion-panel-header>
+    <input #characterImage type="file" (change)="fileChangeEvent($event)" />
+
+    <image-cropper
+      [imageChangedEvent]="imageChangedEvent"
+      [maintainAspectRatio]="true"
+      [aspectRatio]="4 / 3"
+      format="png"
+      (imageCropped)="imageCropped($event)"
+      (imageLoaded)="imageLoaded($event)"
+      (cropperReady)="cropperReady()"
+      (loadImageFailed)="loadImageFailed()"
+    ></image-cropper>
+
     <mat-action-row>
       <button mat-button color="primary" (click)="nextStep()">Next</button>
     </mat-action-row>
   </mat-expansion-panel>
 
   <!-- Feature One -->
-  <mat-expansion-panel [expanded]="step === 1" (opened)="setStep(1)" hideToggle>
+  <mat-expansion-panel [expanded]="step === 2" (opened)="setStep(2)" hideToggle>
     <mat-expansion-panel-header>
-      <mat-panel-title> Feature One </mat-panel-title>
+      <mat-panel-title> Ability One </mat-panel-title>
     </mat-expansion-panel-header>
 
     <mat-form-field appearance="fill">
@@ -111,9 +147,9 @@
   </mat-expansion-panel>
 
   <!-- Feature Two -->
-  <mat-expansion-panel [expanded]="step === 2" (opened)="setStep(2)" hideToggle>
+  <mat-expansion-panel [expanded]="step === 3" (opened)="setStep(3)" hideToggle>
     <mat-expansion-panel-header>
-      <mat-panel-title> Feature Two </mat-panel-title>
+      <mat-panel-title> Ability Two </mat-panel-title>
     </mat-expansion-panel-header>
 
     <mat-form-field appearance="fill">
@@ -169,39 +205,42 @@
     </mat-action-row>
   </mat-expansion-panel>
 
-  <!-- Weakness, Resistance, Retreat -->
-  <mat-expansion-panel [expanded]="step === 3" (opened)="setStep(3)" hideToggle>
+  <!-- Location, Work Environment, Availability -->
+  <mat-expansion-panel [expanded]="step === 4" (opened)="setStep(4)" hideToggle>
     <mat-expansion-panel-header>
-      <mat-panel-title> Weakness, Resistance, and Retreat </mat-panel-title>
+      <mat-panel-title>
+        Location, Work Environment, and Availability
+      </mat-panel-title>
     </mat-expansion-panel-header>
 
     <mat-form-field appearance="fill">
-      <mat-label>Weakness</mat-label>
+      <mat-label>Location</mat-label>
       <input
         matInput
-        #weakness
-        [value]="formService.weakness()"
-        (input)="formService.weakness.set(weakness.value)"
+        #location
+        [value]="formService.location()"
+        (input)="formService.location.set(location.value)"
       />
     </mat-form-field>
 
     <mat-form-field appearance="fill">
-      <mat-label>Resistance</mat-label>
+      <mat-label>Work Environment</mat-label>
       <input
         matInput
-        #resistance
-        [value]="formService.resistance()"
-        (input)="formService.resistance.set(resistance.value)"
+        #workEnvironment
+        environment
+        [value]="formService.workEnvironment()"
+        (input)="formService.workEnvironment.set(workEnvironment.value)"
       />
     </mat-form-field>
 
     <mat-form-field appearance="fill">
-      <mat-label>Retreat</mat-label>
+      <mat-label>Availability</mat-label>
       <input
         matInput
-        #retreat
-        [value]="formService.retreat()"
-        (input)="formService.retreat.set(retreat.value)"
+        #availability
+        [value]="formService.availability()"
+        (input)="formService.availability.set(availability.value)"
       />
     </mat-form-field>
     <mat-action-row>
@@ -210,7 +249,7 @@
   </mat-expansion-panel>
 
   <!-- Additionals -->
-  <mat-expansion-panel [expanded]="step === 4" (opened)="setStep(4)" hideToggle>
+  <mat-expansion-panel [expanded]="step === 5" (opened)="setStep(5)" hideToggle>
     <mat-expansion-panel-header>
       <mat-panel-title> Additional Information </mat-panel-title>
     </mat-expansion-panel-header>

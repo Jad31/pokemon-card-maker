@@ -1,4 +1,5 @@
 import { Injectable, signal } from '@angular/core';
+import { CardForm } from './form.types';
 
 @Injectable({
   providedIn: 'root',
@@ -10,24 +11,28 @@ export class FormService {
   abilityCostOptions: number[] = [0, 1, 2, 3, 4];
   maxCardNumber = 120;
 
-  name = signal<string>('Jad');
-  type = signal<string>('Light');
-  stage = signal<string>('Basic');
-  health = signal<number>(100);
-  abilityOneName = signal<string>('Ability Name');
-  abilityOneDescription = signal<string>('Description');
+  // formDatas: CardForm = {};
+
+  name = signal<string>('');
+  type = signal<string>('');
+  stage = signal<string>('');
+  health = signal<number>(0);
+  characterImage = signal<string>('');
+  fileType = signal<string>('');
+  abilityOneName = signal<string>('');
+  abilityOneDescription = signal<string>('');
   abilityOneCost = signal<number>(this.formAbilityOneCost);
   abilityOneDamage = signal<number>(0);
-  abilityTwoName = signal<string>('Ability Name');
-  abilityTwoDescription = signal<string>('Description');
+  abilityTwoName = signal<string>('');
+  abilityTwoDescription = signal<string>('');
   abilityTwoCost = signal<number>(this.formAbilityTwoCost);
   abilityTwoDamage = signal<number>(0);
-  weakness = signal<string>('To good');
-  resistance = signal<string>('Pressure');
-  retreat = signal<string>("I don't know");
-  upperText = signal<string>('Upper Text');
-  lowerText = signal<string>('Lower Text');
-  illustrator = signal<string>('Illustrator');
-  company = signal<string>('Company');
-  cardNumber = signal<number>(1);
+  location = signal<string>('');
+  workEnvironment = signal<string>('');
+  availability = signal<string>('');
+  upperText = signal<string>('');
+  lowerText = signal<string>('');
+  illustrator = signal<string>('');
+  company = signal<string>('');
+  cardNumber = signal<number>(0);
 }

@@ -18,9 +18,7 @@
 
     <div class="character-img-background">
       <section class="character-img">
-        <img src="assets/jad-chahed.png" />
-        <!-- <img
-              src="https://www.gamepur.com/files/styles/max_width_770px/public/images/tldr/2018/11/Charmander-2-GameRant.jpg?itok=d-NSYNS5"> -->
+        <img [attr.src]="formService.characterImage()" />
       </section>
     </div>
 
@@ -77,17 +75,17 @@
 
     <section class="character-stats">
       <span class="character-stat">
-        <p>weakness</p>
-        <p>{{ formService.weakness() }}</p>
+        <p>location</p>
+        <p>{{ formService.location() }}</p>
         <!-- <img class="element-icon" src="assets/bashroom-dark.png" /> -->
       </span>
       <span class="character-stat">
-        <p>resistance</p>
-        <p>{{ formService.resistance() }}</p>
+        <p>workEnvironment</p>
+        <p>{{ formService.workEnvironment() }}</p>
       </span>
       <span class="character-stat">
-        <p>retreat cost</p>
-        <p>{{ formService.retreat() }}</p>
+        <p>availability</p>
+        <p>{{ formService.availability() }}</p>
         <!-- <img class="element-icon" src="assets/bashroom-dark.png" /> -->
       </span>
     </section>

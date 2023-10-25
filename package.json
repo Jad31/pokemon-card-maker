@@ -5,10 +5,14 @@
   "scripts": {
     "start": "nx serve",
     "build": "nx build",
-    "test": "nx test"
+    "test": "nx test",
+    "e2e": "playwright test",
+    "e2e:ui": "playwright test --ui",
+    "e2e:debug": "playwright test --project chromium --headed"
   },
   "private": true,
   "dependencies": {
+    "@angular-material-components/file-input": "^16.0.1",
     "@angular/animations": "~16.0.0",
     "@angular/cdk": "^16.2.0",
     "@angular/common": "~16.0.0",
@@ -21,6 +25,8 @@
     "@angular/router": "~16.0.0",
     "@nx/angular": "16.2.2",
     "html2canvas": "^1.4.1",
+    "ngx-image-cropper": "^7.1.0",
+    "papaparse": "^5.4.1",
     "rxjs": "~7.8.0",
     "tslib": "^2.3.0",
     "zone.js": "~0.13.0"
@@ -42,9 +48,11 @@
     "@nx/linter": "16.2.2",
     "@nx/web": "16.2.2",
     "@nx/workspace": "16.2.2",
+    "@playwright/test": "^1.37.1",
     "@schematics/angular": "~16.0.0",
     "@types/jest": "^29.4.0",
     "@types/node": "16.11.7",
+    "@types/papaparse": "^5.3.8",
     "@typescript-eslint/eslint-plugin": "^5.58.0",
     "@typescript-eslint/parser": "^5.58.0",
     "cypress": "^12.11.0",

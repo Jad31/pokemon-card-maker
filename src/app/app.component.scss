@@ -180,6 +180,7 @@
       font-weight: bold;
       height: 16px;
       float: left;
+      text-overflow: ellipsis;
     }
     p {
       &:before {
