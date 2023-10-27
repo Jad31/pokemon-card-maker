@@ -1,8 +1,14 @@
-import { Component, effect, inject } from '@angular/core';
-import { NgOptimizedImage, NgForOf, NgIf, NgClass } from '@angular/common';
+import { Component, inject } from '@angular/core';
+import {
+  NgOptimizedImage,
+  NgForOf,
+  NgIf,
+  NgClass,
+  LowerCasePipe,
+} from '@angular/common';
 import { DownloadCardComponent } from '@team-booster-pack/download-card';
-import { CardForm, FormComponent, FormService } from '@team-booster-pack/form';
-import { ActivatedRoute, Params, Router } from '@angular/router';
+import { FormComponent, FormService } from '@team-booster-pack/form';
+import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({
   standalone: true,
@@ -13,6 +19,7 @@ import { ActivatedRoute, Params, Router } from '@angular/router';
     NgForOf,
     NgIf,
     NgClass,
+    LowerCasePipe,
   ],
   selector: 'team-booster-pack-root',
   templateUrl: './app.component.html',

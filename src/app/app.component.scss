@@ -42,7 +42,7 @@
   }
 }
 
-.pokemon-card.Light {
+.pokemon-card.light {
   &:before {
     background-image: url('./../assets/background-light.jpg');
   }
@@ -53,7 +53,7 @@
 }
 
 /* Dark Theme */
-.pokemon-card.Dark {
+.pokemon-card.dark {
   &:before {
     background-image: url('./../assets/background-dark.jpg'); // Adjust this to your dark theme background
   }
@@ -243,6 +243,7 @@
     font-size: 12px;
     padding: 0 10px;
     font-weight: bold;
+    text-align: center;
   }
 }
 

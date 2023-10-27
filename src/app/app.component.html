@@ -8,12 +8,10 @@
       <p class="rarity">{{ formService.stage() }}</p>
       <h1 class="name">{{ formService.name() }}</h1>
       <p class="health">{{ formService.health() }} HP</p>
-      <div *ngIf="formService.type() === 'Light'; else darkElementIcon">
-        <img class="element-icon" src="assets/bashroom-dark.png" />
-      </div>
-      <ng-template #darkElementIcon>
-        <img class="element-icon" src="assets/bashroom-light.png" />
-      </ng-template>
+      <img
+        class="element-icon"
+        src="assets/bashroom-{{ formService.iconType() | lowercase }}-icon.png"
+      />
     </section>
 
     <div class="character-img-background">
@@ -29,15 +27,12 @@
     <section class="character-ability">
       <span class="ability-cost">
         <span *ngFor="let cost of formService.abilityCostOptions; index as i">
-          <ng-container *ngIf="i < formService.abilityOneCost()">
-            <ng-container
-              *ngIf="formService.type() === 'Light'; else darkElementIcon"
-            >
-              <img class="element-icon" src="assets/bashroom-dark.png" />
-            </ng-container>
-            <ng-template #darkElementIcon>
-              <img class="element-icon" src="assets/bashroom-light.png" />
-            </ng-template>
+          <ng-container *ngIf="i < formService.abilityOneCost().length">
+            <img
+              src="assets/{{
+                formService.abilityOneCost()[i] | lowercase
+              }}-icon.png"
+            />
           </ng-container>
         </span>
       </span>
@@ -52,15 +47,12 @@
     <section class="character-ability">
       <span class="ability-cost">
         <span *ngFor="let cost of formService.abilityCostOptions; index as i">
-          <ng-container *ngIf="i < formService.abilityTwoCost()">
-            <ng-container
-              *ngIf="formService.type() === 'Light'; else darkElementIcon"
-            >
-              <img class="element-icon" src="assets/bashroom-dark.png" />
-            </ng-container>
-            <ng-template #darkElementIcon>
-              <img class="element-icon" src="assets/bashroom-light.png" />
-            </ng-template>
+          <ng-container *ngIf="i < formService.abilityTwoCost().length">
+            <img
+              src="assets/{{
+                formService.abilityTwoCost()[i] | lowercase
+              }}-icon.png"
+            />
           </ng-container>
         </span>
       </span>

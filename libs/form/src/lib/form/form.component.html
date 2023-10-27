@@ -18,9 +18,12 @@
 
     <mat-form-field appearance="fill">
       <mat-label>Type</mat-label>
-      <mat-select #type (selectionChange)="formService.type.set(type.value)">
+      <mat-select
+        #iconTypeOptions
+        (selectionChange)="changeCardType(iconTypeOptions.value)"
+      >
         <mat-option *ngFor="let type of formService.typeOptions" [value]="type">
-          {{ type }}
+          {{ type | titlecase }}
         </mat-option>
       </mat-select>
     </mat-form-field>
@@ -115,20 +118,33 @@
       </textarea>
     </mat-form-field>
 
-    <mat-form-field appearance="fill">
-      <mat-label>Cost</mat-label>
-      <mat-select
-        #abilityOneCost
-        (selectionChange)="formService.abilityOneCost.set(abilityOneCost.value)"
-      >
-        <mat-option
-          *ngFor="let cost of formService.abilityCostOptions"
-          [value]="cost"
+    <p>Energy Cost</p>
+    <div class="energy-cost">
+      <div class="cost-types">
+        <div
+          *ngFor="let cost of formService.abilityTypeCostOptions; index as i"
         >
-          {{ cost }}
-        </mat-option>
-      </mat-select>
-    </mat-form-field>
+          <img
+            src="assets/{{
+              formService.abilityTypeCostOptions[i] | lowercase
+            }}-icon.png"
+            (click)="addAbilityOneCost(cost)"
+          />
+        </div>
+      </div>
+      <hr style="width: 80%" />
+      <div class="costs">
+        <p>Cost:</p>
+        <div *ngFor="let cost of formService.abilityOneCost(); index as i">
+          <img
+            src="assets/{{
+              formService.abilityOneCost()[i] | lowercase
+            }}-icon.png"
+            (click)="remAveabilityOneCost(cost)"
+          />
+        </div>
+      </div>
+    </div>
 
     <mat-form-field appearance="fill">
       <mat-label>Damage</mat-label>
@@ -174,20 +190,33 @@
       >
       </textarea>
     </mat-form-field>
-    <mat-form-field appearance="fill">
-      <mat-label>Cost</mat-label>
-      <mat-select
-        #abilityTwoCost
-        (selectionChange)="formService.abilityTwoCost.set(abilityTwoCost.value)"
-      >
-        <mat-option
-          *ngFor="let cost of formService.abilityCostOptions"
-          [value]="cost"
+    <p>Energy Cost</p>
+    <div class="energy-cost">
+      <div class="cost-types">
+        <div
+          *ngFor="let cost of formService.abilityTypeCostOptions; index as i"
         >
-          {{ cost }}
-        </mat-option>
-      </mat-select>
-    </mat-form-field>
+          <img
+            src="assets/{{
+              formService.abilityTypeCostOptions[i] | lowercase
+            }}-icon.png"
+            (click)="addAbilityTwoCost(cost)"
+          />
+        </div>
+      </div>
+      <hr style="width: 80%" />
+      <div class="costs">
+        <p>Cost:</p>
+        <div *ngFor="let cost of formService.abilityTwoCost(); index as i">
+          <img
+            src="assets/{{
+              formService.abilityTwoCost()[i] | lowercase
+            }}-icon.png"
+            (click)="remAveabilityTwoCost(cost)"
+          />
+        </div>
+      </div>
+    </div>
 
     <mat-form-field appearance="fill">
       <mat-label>Damage</mat-label>

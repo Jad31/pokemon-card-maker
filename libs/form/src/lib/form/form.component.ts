@@ -6,7 +6,7 @@ import {
   ViewEncapsulation,
   inject,
 } from '@angular/core';
-import { CommonModule } from '@angular/common';
+import { CommonModule, NgFor } from '@angular/common';
 import { ReactiveFormsModule } from '@angular/forms';
 import { MatInputModule } from '@angular/material/input';
 import { MatFormFieldModule } from '@angular/material/form-field';
@@ -39,6 +39,7 @@ import { CardForm } from './form.types';
     MatSelectModule,
     ImageCropperModule,
     NgxMatFileInputModule,
+    NgFor,
   ],
   templateUrl: './form.component.html',
   styleUrls: ['./form.component.scss'],
@@ -69,6 +70,16 @@ export class FormComponent implements OnInit {
       document.body.classList.remove('dark-theme');
       document.body.classList.add('light-theme');
     }
+  }
+
+  changeCardType(type: 'light' | 'dark') {
+    this.formService.iconType.set(type);
+    this.formService.type.set(type);
+    console.log({
+      type,
+      iconType: this.formService.iconType(),
+      formServiceType: this.formService.type(),
+    });
   }
 
   setStep(index: number) {
@@ -105,5 +116,39 @@ export class FormComponent implements OnInit {
   }
   loadImageFailed() {
     console.log('Image failed to load ');
+  }
+
+  addAbilityOneCost(cost: string) {
+    if (this.formService.abilityOneCost().length < 4) {
+      this.formService.abilityOneCost.update((abilityOneCost) => {
+        abilityOneCost.push(cost);
+        return abilityOneCost;
+      });
+    }
+  }
+
+  remAveabilityOneCost(cost: string) {
+    this.formService.abilityOneCost.update((abilityOneCost) => {
+      return abilityOneCost.filter((abilityCost) => {
+        return abilityCost !== cost;
+      });
+    });
+  }
+
+  addAbilityTwoCost(cost: string) {
+    if (this.formService.abilityTwoCost().length < 4) {
+      this.formService.abilityTwoCost.update((abilityTwoCost) => {
+        abilityTwoCost.push(cost);
+        return abilityTwoCost;
+      });
+    }
+  }
+
+  remAveabilityTwoCost(cost: string) {
+    this.formService.abilityTwoCost.update((abilityTwoCost) => {
+      return abilityTwoCost.filter((abilityCost) => {
+        return abilityCost !== cost;
+      });
+    });
   }
 }
