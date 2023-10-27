@@ -1,8 +1,6 @@
 import {
   ChangeDetectionStrategy,
   Component,
-  Input,
-  OnInit,
   ViewEncapsulation,
   inject,
 } from '@angular/core';
@@ -22,8 +20,6 @@ import {
   LoadedImage,
 } from 'ngx-image-cropper';
 import { NgxMatFileInputModule } from '@angular-material-components/file-input';
-import { Params } from '@angular/router';
-import { CardForm } from './form.types';
 
 @Component({
   selector: 'team-booster-pack-form',
@@ -46,35 +42,21 @@ import { CardForm } from './form.types';
   encapsulation: ViewEncapsulation.None,
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class FormComponent implements OnInit {
+export class FormComponent {
   formService = inject(FormService);
   step = 0;
   imageUrl = '';
-
-  theme = 'light';
 
   sanitizer = inject(DomSanitizer);
 
   imageChangedEvent: any = '';
   croppedImage: any = '';
 
-  ngOnInit() {
-    this.switchTheme(this.theme);
-  }
-
-  switchTheme(theme: string) {
-    if (theme === 'dark') {
-      document.body.classList.remove('light-theme');
-      document.body.classList.add('dark-theme');
-    } else {
-      document.body.classList.remove('dark-theme');
-      document.body.classList.add('light-theme');
-    }
-  }
-
   changeCardType(type: 'light' | 'dark') {
-    this.formService.iconType.set(type);
     this.formService.type.set(type);
+    this.formService.type() === 'dark'
+      ? this.formService.iconType.set('light')
+      : this.formService.iconType.set('dark');
     console.log({
       type,
       iconType: this.formService.iconType(),
