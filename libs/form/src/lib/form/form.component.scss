@@ -15,7 +15,8 @@ mat-form-field {
   display: flex;
   flex-direction: column;
   height: 150px;
-  width: 200px;
+  min-width: 250px;
+  width: max-content;
   background-color: whitesmoke;
   border-radius: 8px;
   border: 1px solid black;

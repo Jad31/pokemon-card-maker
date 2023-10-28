@@ -14,11 +14,13 @@ export class FormService {
     'ngrx',
     'oss-initiative',
     'nestjs',
+    'rust',
+    'google-cloud',
+    'kubernetes',
+    'git',
   ];
   abilityCostOptions: number[] = [0, 1, 2, 3, 4];
   maxCardNumber = 120;
-
-  // formDatas: CardForm = {};
 
   name = signal<string>('');
   type = signal<'light' | 'dark' | ''>('');
