@@ -27,7 +27,6 @@ export type Form = {
 };
 
 export type FormState = {
-  [key: string]: WritableSignal<any>; // This is the index signature
   name: WritableSignal<string>;
   type: WritableSignal<'light' | 'dark'>;
   iconType: WritableSignal<string>;

@@ -1,4 +1,4 @@
-import { Injectable } from '@angular/core';
+import { Injectable, WritableSignal } from '@angular/core';
 import { Form, FormState, formInitialState } from './form.types';
 import { Router, ActivatedRoute } from '@angular/router';
 import { tap } from 'rxjs/operators';
@@ -32,7 +32,6 @@ export class FormService {
   }
   updateFormStateFromQueryParams(route: ActivatedRoute) {
     return route.queryParamMap.subscribe((params) => {
-      console.log({ params });
       // Loop through all the keys of formInitialState
       return Object.keys(formInitialState).forEach((key) => {
         if (this.isKeyOfFormState(key)) {
@@ -40,9 +39,12 @@ export class FormService {
           const valueToSet =
             valueFromQuery !== null && valueFromQuery !== undefined
               ? valueFromQuery
-              : formInitialState[key]();
-          (this.formState[key] as any).set(valueToSet);
-          console.log({ key, valueFromQuery, valueToSet });
+              : formInitialState[key as keyof Form]();
+          (
+            this.formState[key as keyof Form] as WritableSignal<
+              string | number | string[]
+            >
+          ).set(valueToSet);
         }
       });
     });

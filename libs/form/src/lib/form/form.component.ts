@@ -1,9 +1,7 @@
 import {
   ChangeDetectionStrategy,
   Component,
-  OnInit,
   ViewEncapsulation,
-  effect,
   inject,
 } from '@angular/core';
 import { CommonModule, NgFor } from '@angular/common';
@@ -61,14 +59,15 @@ export class FormComponent {
     this.formService.updateFormStateFromQueryParams(this.activatedRoute);
   }
 
-  formFieldChange(event: any, key: keyof Form) {
-    console.log({ event, key });
-    this.formService.formState[key].set(event.target.value as never);
-    this.router.navigate([], {
-      queryParams: {
-        [key]: this.formService.formState[key](),
-      },
-    });
+  formFieldChange(event: Event, key: keyof Form) {
+    if (event.target instanceof HTMLInputElement) {
+      this.formService.formState[key].set(event.target.value as never);
+      this.router.navigate([], {
+        queryParams: {
+          [key]: this.formService.formState[key](),
+        },
+      });
+    }
   }
 
   changeCardType(type: 'light' | 'dark') {
