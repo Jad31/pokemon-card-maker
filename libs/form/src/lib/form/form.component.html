@@ -11,8 +11,8 @@
       <input
         matInput
         #name
-        [value]="formService.name()"
-        (input)="formService.name.set(name.value)"
+        [value]="formService.formState.name()"
+        (input)="formFieldChange($event, 'name')"
       />
     </mat-form-field>
 
@@ -32,8 +32,8 @@
       <input
         matInput
         #stage
-        [value]="formService.stage()"
-        (input)="formService.stage.set(stage.value)"
+        [value]="formService.formState.stage()"
+        (input)="formService.formState.stage.set(stage.value)"
       />
     </mat-form-field>
 
@@ -42,8 +42,8 @@
       <input
         matInput
         #health
-        [value]="formService.health()"
-        (input)="formService.health.set(+health.value)"
+        [value]="formService.formState.health()"
+        (input)="formService.formState.health.set(+health.value)"
         type="number"
         min="0"
       />
@@ -56,8 +56,8 @@
         #characterImage
         type="file"
         (change)="fileChangeEvent($event)"
-        [value]="formService.characterImage()"
-        (input)="formService.characterImage.set(characterImage.value)"
+        [value]="formService.formState.characterImage()"
+        (input)="formService.formState.characterImage.set(characterImage.value)"
       />
     </mat-form-field> -->
     <mat-action-row>
@@ -100,8 +100,8 @@
       <input
         matInput
         #abilityOneName
-        [value]="formService.abilityOneName()"
-        (input)="formService.abilityOneName.set(abilityOneName.value)"
+        [value]="formService.formState.abilityOneName()"
+        (input)="formService.formState.abilityOneName.set(abilityOneName.value)"
       />
     </mat-form-field>
 
@@ -110,9 +110,11 @@
       <textarea
         matInput
         #abilityOneDescription
-        [value]="formService.abilityOneDescription()"
+        [value]="formService.formState.abilityOneDescription()"
         (input)="
-          formService.abilityOneDescription.set(abilityOneDescription.value)
+          formService.formState.abilityOneDescription.set(
+            abilityOneDescription.value
+          )
         "
       >
       </textarea>
@@ -135,10 +137,15 @@
       <hr style="width: 80%" />
       <div class="costs">
         <p>Cost:</p>
-        <div *ngFor="let cost of formService.abilityOneCost(); index as i">
+        <div
+          *ngFor="
+            let cost of formService.formState.abilityOneCost();
+            index as i
+          "
+        >
           <img
             src="assets/{{
-              formService.abilityOneCost()[i] | lowercase
+              formService.formState.abilityOneCost()[i] | lowercase
             }}-icon.png"
             (click)="remAveabilityOneCost(cost)"
           />
@@ -151,8 +158,10 @@
       <input
         matInput
         #abilityOneDamage
-        [value]="formService.abilityOneDamage()"
-        (input)="formService.abilityOneDamage.set(+abilityOneDamage.value)"
+        [value]="formService.formState.abilityOneDamage()"
+        (input)="
+          formService.formState.abilityOneDamage.set(+abilityOneDamage.value)
+        "
         type="number"
         min="0"
       />
@@ -173,8 +182,8 @@
       <input
         matInput
         #abilityTwoName
-        [value]="formService.abilityTwoName()"
-        (input)="formService.abilityTwoName.set(abilityTwoName.value)"
+        [value]="formService.formState.abilityTwoName()"
+        (input)="formService.formState.abilityTwoName.set(abilityTwoName.value)"
       />
     </mat-form-field>
 
@@ -183,9 +192,11 @@
       <textarea
         matInput
         #abilityTwoDescription
-        [value]="formService.abilityTwoDescription()"
+        [value]="formService.formState.abilityTwoDescription()"
         (input)="
-          formService.abilityTwoDescription.set(abilityTwoDescription.value)
+          formService.formState.abilityTwoDescription.set(
+            abilityTwoDescription.value
+          )
         "
       >
       </textarea>
@@ -207,10 +218,15 @@
       <hr style="width: 80%" />
       <div class="costs">
         <p>Cost:</p>
-        <div *ngFor="let cost of formService.abilityTwoCost(); index as i">
+        <div
+          *ngFor="
+            let cost of formService.formState.abilityTwoCost();
+            index as i
+          "
+        >
           <img
             src="assets/{{
-              formService.abilityTwoCost()[i] | lowercase
+              formService.formState.abilityTwoCost()[i] | lowercase
             }}-icon.png"
             (click)="remAveabilityTwoCost(cost)"
           />
@@ -223,8 +239,10 @@
       <input
         matInput
         #abilityTwoDamage
-        [value]="formService.abilityTwoDamage()"
-        (input)="formService.abilityTwoDamage.set(+abilityTwoDamage.value)"
+        [value]="formService.formState.abilityTwoDamage()"
+        (input)="
+          formService.formState.abilityTwoDamage.set(+abilityTwoDamage.value)
+        "
         type="number"
         min="0"
       />
@@ -247,8 +265,8 @@
       <input
         matInput
         #location
-        [value]="formService.location()"
-        (input)="formService.location.set(location.value)"
+        [value]="formService.formState.location()"
+        (input)="formService.formState.location.set(location.value)"
       />
     </mat-form-field>
 
@@ -258,8 +276,10 @@
         matInput
         #workEnvironment
         environment
-        [value]="formService.workEnvironment()"
-        (input)="formService.workEnvironment.set(workEnvironment.value)"
+        [value]="formService.formState.workEnvironment()"
+        (input)="
+          formService.formState.workEnvironment.set(workEnvironment.value)
+        "
       />
     </mat-form-field>
 
@@ -268,8 +288,8 @@
       <input
         matInput
         #availability
-        [value]="formService.availability()"
-        (input)="formService.availability.set(availability.value)"
+        [value]="formService.formState.availability()"
+        (input)="formService.formState.availability.set(availability.value)"
       />
     </mat-form-field>
     <mat-action-row>
@@ -288,8 +308,8 @@
       <textarea
         matInput
         #upperText
-        [value]="formService.upperText()"
-        (input)="formService.upperText.set(upperText.value)"
+        [value]="formService.formState.upperText()"
+        (input)="formService.formState.upperText.set(upperText.value)"
       ></textarea>
     </mat-form-field>
 
@@ -298,8 +318,8 @@
       <textarea
         matInput
         #lowerText
-        [value]="formService.lowerText()"
-        (input)="formService.lowerText.set(lowerText.value)"
+        [value]="formService.formState.lowerText()"
+        (input)="formService.formState.lowerText.set(lowerText.value)"
       >
       </textarea>
     </mat-form-field>
@@ -309,8 +329,8 @@
       <input
         matInput
         #illustrator
-        [value]="formService.illustrator()"
-        (input)="formService.illustrator.set(illustrator.value)"
+        [value]="formService.formState.illustrator()"
+        (input)="formService.formState.illustrator.set(illustrator.value)"
       />
     </mat-form-field>
 
@@ -319,8 +339,8 @@
       <input
         matInput
         #company
-        [value]="formService.company()"
-        (input)="formService.company.set(company.value)"
+        [value]="formService.formState.company()"
+        (input)="formService.formState.company.set(company.value)"
       />
     </mat-form-field>
     <mat-form-field appearance="fill">
@@ -328,8 +348,8 @@
       <input
         matInput
         #cardNumber
-        [value]="formService.cardNumber()"
-        (input)="formService.cardNumber.set(+cardNumber.value)"
+        [value]="formService.formState.cardNumber()"
+        (input)="formService.formState.cardNumber.set(+cardNumber.value)"
         type="number"
         min="0"
       />

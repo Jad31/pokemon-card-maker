@@ -1,7 +1,9 @@
 import {
   ChangeDetectionStrategy,
   Component,
+  OnInit,
   ViewEncapsulation,
+  effect,
   inject,
 } from '@angular/core';
 import { CommonModule, NgFor } from '@angular/common';
@@ -20,6 +22,8 @@ import {
   LoadedImage,
 } from 'ngx-image-cropper';
 import { NgxMatFileInputModule } from '@angular-material-components/file-input';
+import { Router, ActivatedRoute } from '@angular/router';
+import { Form } from './form.types';
 
 @Component({
   selector: 'team-booster-pack-form',
@@ -44,23 +48,38 @@ import { NgxMatFileInputModule } from '@angular-material-components/file-input';
 })
 export class FormComponent {
   formService = inject(FormService);
+  sanitizer = inject(DomSanitizer);
+  router = inject(Router);
+  activatedRoute = inject(ActivatedRoute);
+
   step = 0;
   imageUrl = '';
-
-  sanitizer = inject(DomSanitizer);
-
   imageChangedEvent: any = '';
   croppedImage: any = '';
 
+  constructor() {
+    this.formService.updateFormStateFromQueryParams(this.activatedRoute);
+  }
+
+  formFieldChange(event: any, key: keyof Form) {
+    console.log({ event, key });
+    this.formService.formState[key].set(event.target.value as never);
+    this.router.navigate([], {
+      queryParams: {
+        [key]: this.formService.formState[key](),
+      },
+    });
+  }
+
   changeCardType(type: 'light' | 'dark') {
-    this.formService.type.set(type);
-    this.formService.type() === 'dark'
-      ? this.formService.iconType.set('light')
-      : this.formService.iconType.set('dark');
+    this.formService.formState.type.set(type);
+    this.formService.formState.type() === 'dark'
+      ? this.formService.formState.iconType.set('light')
+      : this.formService.formState.iconType.set('dark');
     console.log({
       type,
-      iconType: this.formService.iconType(),
-      formServiceType: this.formService.type(),
+      iconType: this.formService.formState.iconType(),
+      formServiceType: this.formService.formState.type(),
     });
   }
 
@@ -86,7 +105,7 @@ export class FormComponent {
       this.croppedImage = this.sanitizer.bypassSecurityTrustResourceUrl(
         event.objectUrl
       );
-      this.formService.characterImage.set(this.croppedImage);
+      this.formService.formState.characterImage.set(this.croppedImage);
       // event.blob can be used to upload the cropped image
     }
   }
@@ -101,8 +120,8 @@ export class FormComponent {
   }
 
   addAbilityOneCost(cost: string) {
-    if (this.formService.abilityOneCost().length < 4) {
-      this.formService.abilityOneCost.update((abilityOneCost) => {
+    if (this.formService.formState.abilityOneCost().length < 4) {
+      this.formService.formState.abilityOneCost.update((abilityOneCost) => {
         abilityOneCost.push(cost);
         return abilityOneCost;
       });
@@ -110,7 +129,7 @@ export class FormComponent {
   }
 
   remAveabilityOneCost(cost: string) {
-    this.formService.abilityOneCost.update((abilityOneCost) => {
+    this.formService.formState.abilityOneCost.update((abilityOneCost) => {
       return abilityOneCost.filter((abilityCost) => {
         return abilityCost !== cost;
       });
@@ -118,8 +137,8 @@ export class FormComponent {
   }
 
   addAbilityTwoCost(cost: string) {
-    if (this.formService.abilityTwoCost().length < 4) {
-      this.formService.abilityTwoCost.update((abilityTwoCost) => {
+    if (this.formService.formState.abilityTwoCost().length < 4) {
+      this.formService.formState.abilityTwoCost.update((abilityTwoCost) => {
         abilityTwoCost.push(cost);
         return abilityTwoCost;
       });
@@ -127,7 +146,7 @@ export class FormComponent {
   }
 
   remAveabilityTwoCost(cost: string) {
-    this.formService.abilityTwoCost.update((abilityTwoCost) => {
+    this.formService.formState.abilityTwoCost.update((abilityTwoCost) => {
       return abilityTwoCost.filter((abilityCost) => {
         return abilityCost !== cost;
       });

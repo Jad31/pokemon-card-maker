@@ -1,4 +1,7 @@
-import { Injectable, signal } from '@angular/core';
+import { Injectable } from '@angular/core';
+import { Form, FormState, formInitialState } from './form.types';
+import { Router, ActivatedRoute } from '@angular/router';
+import { tap } from 'rxjs/operators';
 
 @Injectable({
   providedIn: 'root',
@@ -22,27 +25,26 @@ export class FormService {
   abilityCostOptions: number[] = [0, 1, 2, 3, 4];
   maxCardNumber = 120;
 
-  name = signal<string>('');
-  type = signal<'light' | 'dark' | ''>('');
-  iconType = signal<string>('');
-  stage = signal<string>('');
-  health = signal<number>(0);
-  characterImage = signal<string>('');
-  fileType = signal<string>('');
-  abilityOneName = signal<string>('');
-  abilityOneDescription = signal<string>('');
-  abilityOneCost = signal<string[]>([]);
-  abilityOneDamage = signal<number>(0);
-  abilityTwoName = signal<string>('');
-  abilityTwoDescription = signal<string>('');
-  abilityTwoCost = signal<string[]>([]);
-  abilityTwoDamage = signal<number>(0);
-  location = signal<string>('');
-  workEnvironment = signal<string>('');
-  availability = signal<string>('');
-  upperText = signal<string>('');
-  lowerText = signal<string>('');
-  illustrator = signal<string>('');
-  company = signal<string>('');
-  cardNumber = signal<number>(0);
+  formState = formInitialState;
+
+  isKeyOfFormState(key: string): boolean {
+    return key in formInitialState;
+  }
+  updateFormStateFromQueryParams(route: ActivatedRoute) {
+    return route.queryParamMap.subscribe((params) => {
+      console.log({ params });
+      // Loop through all the keys of formInitialState
+      return Object.keys(formInitialState).forEach((key) => {
+        if (this.isKeyOfFormState(key)) {
+          const valueFromQuery = params.get(key);
+          const valueToSet =
+            valueFromQuery !== null && valueFromQuery !== undefined
+              ? valueFromQuery
+              : formInitialState[key]();
+          (this.formState[key] as any).set(valueToSet);
+          console.log({ key, valueFromQuery, valueToSet });
+        }
+      });
+    });
+  }
 }

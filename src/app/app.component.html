@@ -3,81 +3,99 @@
     <team-booster-pack-form></team-booster-pack-form>
     <team-booster-pack-download-card></team-booster-pack-download-card>
   </div>
-  <div id="pokemon-card" class="pokemon-card" [ngClass]="formService.type()">
+  <div
+    id="pokemon-card"
+    class="pokemon-card"
+    [ngClass]="formService.formState.type()"
+  >
     <section class="title-row">
-      <p class="rarity">{{ formService.stage() }}</p>
-      <h1 class="name">{{ formService.name() }}</h1>
-      <p class="health">{{ formService.health() }} HP</p>
+      <p class="rarity">{{ formService.formState.stage() }}</p>
+      <h1 class="name">{{ formService.formState.name() }}</h1>
+      <p class="health">{{ formService.formState.health() }} HP</p>
       <img
         class="element-icon"
-        src="assets/bashroom-{{ formService.iconType() | lowercase }}-icon.png"
+        src="assets/bashroom-{{
+          formService.formState.iconType() | lowercase
+        }}-icon.png"
       />
     </section>
 
     <div class="character-img-background">
       <section class="character-img">
-        <img [attr.src]="formService.characterImage()" />
+        <img [attr.src]="formService.formState.characterImage()" />
       </section>
     </div>
 
     <section class="character-meta">
-      <p>{{ formService.upperText() }}</p>
+      <p>{{ formService.formState.upperText() }}</p>
     </section>
 
     <section class="character-ability">
       <span class="ability-cost">
         <span *ngFor="let cost of formService.abilityCostOptions; index as i">
-          <ng-container *ngIf="i < formService.abilityOneCost().length">
+          <ng-container
+            *ngIf="i < formService.formState.abilityOneCost().length"
+          >
             <img
               src="assets/{{
-                formService.abilityOneCost()[i] | lowercase
+                formService.formState.abilityOneCost()[i] | lowercase
               }}-icon.png"
             />
           </ng-container>
         </span>
       </span>
       <span class="ability-description">
-        <span class="ability-name">{{ formService.abilityOneName() }}</span>
+        <span class="ability-name">{{
+          formService.formState.abilityOneName()
+        }}</span>
         <p>
-          {{ formService.abilityOneDescription() }}
+          {{ formService.formState.abilityOneDescription() }}
         </p>
       </span>
-      <p class="ability-damage">{{ formService.abilityOneDamage() }}</p>
+      <p class="ability-damage">
+        {{ formService.formState.abilityOneDamage() }}
+      </p>
     </section>
     <section class="character-ability">
       <span class="ability-cost">
         <span *ngFor="let cost of formService.abilityCostOptions; index as i">
-          <ng-container *ngIf="i < formService.abilityTwoCost().length">
+          <ng-container
+            *ngIf="i < formService.formState.abilityTwoCost().length"
+          >
             <img
               src="assets/{{
-                formService.abilityTwoCost()[i] | lowercase
+                formService.formState.abilityTwoCost()[i] | lowercase
               }}-icon.png"
             />
           </ng-container>
         </span>
       </span>
       <span class="ability-description">
-        <span class="ability-name">{{ formService.abilityTwoName() }}</span>
+        <span class="ability-name">{{
+          formService.formState.abilityTwoName()
+        }}</span>
         <p>
-          {{ formService.abilityTwoDescription() }}
+          {{ formService.formState.abilityTwoDescription() }}
         </p>
       </span>
-      <p class="ability-damage">{{ formService.abilityTwoDamage() }}</p>
+      <p class="ability-damage">
+        {{ formService.formState.abilityTwoDamage() }}
+      </p>
     </section>
 
     <section class="character-stats">
       <span class="character-stat">
         <p>location</p>
-        <p>{{ formService.location() }}</p>
+        <p>{{ formService.formState.location() }}</p>
         <!-- <img class="element-icon" src="assets/bashroom-dark.png" /> -->
       </span>
       <span class="character-stat">
         <p>work environment</p>
-        <p>{{ formService.workEnvironment() }}</p>
+        <p>{{ formService.formState.workEnvironment() }}</p>
       </span>
       <span class="character-stat">
         <p>availability</p>
-        <p>{{ formService.availability() }}</p>
+        <p>{{ formService.formState.availability() }}</p>
         <!-- <img class="element-icon" src="assets/bashroom-dark.png" /> -->
       </span>
     </section>
@@ -85,16 +103,16 @@
     <section class="character-description-background">
       <div class="character-description">
         <p>
-          {{ formService.lowerText() }}
+          {{ formService.formState.lowerText() }}
         </p>
       </div>
     </section>
 
     <section class="card-details">
-      <p class="artist">{{ formService.illustrator() }}</p>
-      <p class="company">{{ formService.company() }}</p>
+      <p class="artist">{{ formService.formState.illustrator() }}</p>
+      <p class="company">{{ formService.formState.company() }}</p>
       <p class="collector-card-number">
-        {{ formService.cardNumber() }}/{{ formService.maxCardNumber }}
+        {{ formService.formState.cardNumber() }}/{{ formService.maxCardNumber }}
       </p>
     </section>
     <div></div>
