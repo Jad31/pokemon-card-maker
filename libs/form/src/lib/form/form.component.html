@@ -147,7 +147,7 @@
             src="assets/{{
               formService.formState.abilityOneCost()[i] | lowercase
             }}-icon.png"
-            (click)="remAveabilityOneCost(cost)"
+            (click)="removeAbilityOneCost(i)"
           />
         </div>
       </div>
@@ -228,7 +228,7 @@
             src="assets/{{
               formService.formState.abilityTwoCost()[i] | lowercase
             }}-icon.png"
-            (click)="remAveabilityTwoCost(cost)"
+            (click)="removeAbilityTwoCost(i)"
           />
         </div>
       </div>

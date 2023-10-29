@@ -127,11 +127,10 @@ export class FormComponent {
     }
   }
 
-  remAveabilityOneCost(cost: string) {
+  removeAbilityOneCost(index: number) {
     this.formService.formState.abilityOneCost.update((abilityOneCost) => {
-      return abilityOneCost.filter((abilityCost) => {
-        return abilityCost !== cost;
-      });
+      abilityOneCost.splice(index, 1);
+      return abilityOneCost;
     });
   }
 
@@ -144,11 +143,10 @@ export class FormComponent {
     }
   }
 
-  remAveabilityTwoCost(cost: string) {
+  removeAbilityTwoCost(index: number) {
     this.formService.formState.abilityTwoCost.update((abilityTwoCost) => {
-      return abilityTwoCost.filter((abilityCost) => {
-        return abilityCost !== cost;
-      });
+      abilityTwoCost.splice(index, 1);
+      return abilityTwoCost;
     });
   }
 }
