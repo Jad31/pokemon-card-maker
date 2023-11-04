@@ -4,7 +4,7 @@ import {
   ViewEncapsulation,
   inject,
 } from '@angular/core';
-import { CommonModule, NgFor } from '@angular/common';
+import { CommonModule, DecimalPipe, NgFor } from '@angular/common';
 import { ReactiveFormsModule } from '@angular/forms';
 import { MatInputModule } from '@angular/material/input';
 import { MatFormFieldModule } from '@angular/material/form-field';
@@ -38,6 +38,7 @@ import { Form } from './form.types';
     ImageCropperModule,
     NgxMatFileInputModule,
     NgFor,
+    DecimalPipe,
   ],
   templateUrl: './form.component.html',
   styleUrls: ['./form.component.scss'],
@@ -64,6 +65,7 @@ export class FormComponent {
       this.formService.formState[key].set(event.target.value as never);
       this.router.navigate([], {
         queryParams: {
+          ...this.router.parseUrl(this.router.url).queryParams,
           [key]: this.formService.formState[key](),
         },
       });
@@ -75,10 +77,12 @@ export class FormComponent {
     this.formService.formState.type() === 'dark'
       ? this.formService.formState.iconType.set('light')
       : this.formService.formState.iconType.set('dark');
-    console.log({
-      type,
-      iconType: this.formService.formState.iconType(),
-      formServiceType: this.formService.formState.type(),
+    this.router.navigate([], {
+      queryParams: {
+        ...this.router.parseUrl(this.router.url).queryParams,
+
+        type: this.formService.formState['type'](),
+      },
     });
   }
 

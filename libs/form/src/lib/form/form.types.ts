@@ -26,31 +26,11 @@ export type Form = {
   cardNumber: number;
 };
 
-export type FormState = {
-  name: WritableSignal<string>;
-  type: WritableSignal<'light' | 'dark'>;
-  iconType: WritableSignal<string>;
-  stage: WritableSignal<string>;
-  health: WritableSignal<number>;
-  characterImage: WritableSignal<string>;
-  fileType: WritableSignal<string>;
-  abilityOneName: WritableSignal<string>;
-  abilityOneDescription: WritableSignal<string>;
-  abilityOneCost: WritableSignal<string[]>;
-  abilityOneDamage: WritableSignal<number>;
-  abilityTwoName: WritableSignal<string>;
-  abilityTwoDescription: WritableSignal<string>;
-  abilityTwoCost: WritableSignal<string[]>;
-  abilityTwoDamage: WritableSignal<number>;
-  location: WritableSignal<string>;
-  workEnvironment: WritableSignal<string>;
-  availability: WritableSignal<string>;
-  upperText: WritableSignal<string>;
-  lowerText: WritableSignal<string>;
-  illustrator: WritableSignal<string>;
-  company: WritableSignal<string>;
-  cardNumber: WritableSignal<number>;
+export type WritableSignalForm<T> = {
+  [P in keyof T]: WritableSignal<T[P]>;
 };
+
+export type FormState = WritableSignalForm<Form>;
 
 export const formInitialState: FormState = {
   name: signal<string>(''),
