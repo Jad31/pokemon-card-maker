@@ -33,7 +33,7 @@
         matInput
         #stage
         [value]="formService.formState.stage()"
-        (input)="formService.formState.stage.set(stage.value)"
+        (input)="formFieldChange($event, 'stage')"
       />
     </mat-form-field>
 
@@ -44,23 +44,12 @@
         matInput
         #health
         [value]="formService.formState.health()"
-        (input)="formService.formState.health.set(+health.value)"
+        (input)="formFieldChange($event, 'health')"
         type="number"
         min="0"
       />
     </mat-form-field>
 
-    <!-- <mat-form-field appearance="fill">
-      <mat-label>Image</mat-label>
-      <input
-        matInput
-        #characterImage
-        type="file"
-        (change)="fileChangeEvent($event)"
-        [value]="formService.formState.characterImage()"
-        (input)="formService.formState.characterImage.set(characterImage.value)"
-      />
-    </mat-form-field> -->
     <mat-action-row>
       <button mat-button color="primary" (click)="nextStep()">Next</button>
     </mat-action-row>
@@ -102,7 +91,7 @@
         matInput
         #abilityOneName
         [value]="formService.formState.abilityOneName()"
-        (input)="formService.formState.abilityOneName.set(abilityOneName.value)"
+        (input)="formFieldChange($event, 'abilityOneName')"
       />
     </mat-form-field>
 
@@ -112,11 +101,7 @@
         matInput
         #abilityOneDescription
         [value]="formService.formState.abilityOneDescription()"
-        (input)="
-          formService.formState.abilityOneDescription.set(
-            abilityOneDescription.value
-          )
-        "
+        (input)="formFieldChange($event, 'abilityOneDescription')"
       >
       </textarea>
     </mat-form-field>
@@ -160,9 +145,7 @@
         matInput
         #abilityOneDamage
         [value]="formService.formState.abilityOneDamage()"
-        (input)="
-          formService.formState.abilityOneDamage.set(+abilityOneDamage.value)
-        "
+        (input)="formFieldChange($event, 'abilityOneDamage')"
         type="number"
         min="0"
       />
@@ -184,7 +167,7 @@
         matInput
         #abilityTwoName
         [value]="formService.formState.abilityTwoName()"
-        (input)="formService.formState.abilityTwoName.set(abilityTwoName.value)"
+        (input)="formFieldChange($event, 'abilityTwoName')"
       />
     </mat-form-field>
 
@@ -194,11 +177,7 @@
         matInput
         #abilityTwoDescription
         [value]="formService.formState.abilityTwoDescription()"
-        (input)="
-          formService.formState.abilityTwoDescription.set(
-            abilityTwoDescription.value
-          )
-        "
+        (input)="formFieldChange($event, 'abilityTwoDescription')"
       >
       </textarea>
     </mat-form-field>
@@ -241,9 +220,7 @@
         matInput
         #abilityTwoDamage
         [value]="formService.formState.abilityTwoDamage()"
-        (input)="
-          formService.formState.abilityTwoDamage.set(+abilityTwoDamage.value)
-        "
+        (input)="formFieldChange($event, 'abilityTwoDamage')"
         type="number"
         min="0"
       />
@@ -267,7 +244,7 @@
         matInput
         #location
         [value]="formService.formState.location()"
-        (input)="formService.formState.location.set(location.value)"
+        (input)="formFieldChange($event, 'location')"
       />
     </mat-form-field>
 
@@ -278,9 +255,7 @@
         #workEnvironment
         environment
         [value]="formService.formState.workEnvironment()"
-        (input)="
-          formService.formState.workEnvironment.set(workEnvironment.value)
-        "
+        (input)="formFieldChange($event, 'workEnvironment')"
       />
     </mat-form-field>
 
@@ -290,7 +265,7 @@
         matInput
         #availability
         [value]="formService.formState.availability()"
-        (input)="formService.formState.availability.set(availability.value)"
+        (input)="formFieldChange($event, 'availability')"
       />
     </mat-form-field>
     <mat-action-row>
@@ -310,7 +285,7 @@
         matInput
         #upperText
         [value]="formService.formState.upperText()"
-        (input)="formService.formState.upperText.set(upperText.value)"
+        (input)="formFieldChange($event, 'upperText')"
       ></textarea>
     </mat-form-field>
 
@@ -320,7 +295,7 @@
         matInput
         #lowerText
         [value]="formService.formState.lowerText()"
-        (input)="formService.formState.lowerText.set(lowerText.value)"
+        (input)="formFieldChange($event, 'lowerText')"
       >
       </textarea>
     </mat-form-field>
@@ -331,7 +306,7 @@
         matInput
         #illustrator
         [value]="formService.formState.illustrator()"
-        (input)="formService.formState.illustrator.set(illustrator.value)"
+        (input)="formFieldChange($event, 'illustrator')"
       />
     </mat-form-field>
 
@@ -341,7 +316,7 @@
         matInput
         #company
         [value]="formService.formState.company()"
-        (input)="formService.formState.company.set(company.value)"
+        (input)="formFieldChange($event, 'company')"
       />
     </mat-form-field>
     <mat-form-field appearance="fill">
@@ -350,7 +325,7 @@
         matInput
         #cardNumber
         [value]="formService.formState.cardNumber()"
-        (input)="formService.formState.cardNumber.set(+cardNumber.value)"
+        (input)="formFieldChange($event, 'cardNumber')"
         type="number"
         min="0"
       />

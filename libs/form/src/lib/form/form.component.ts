@@ -128,6 +128,14 @@ export class FormComponent {
         abilityOneCost.push(cost);
         return abilityOneCost;
       });
+      this.router.navigate([], {
+        queryParams: {
+          ...this.router.parseUrl(this.router.url).queryParams,
+          'abilityOneCost[]': this.formService.formState
+            .abilityOneCost()
+            .toString(),
+        },
+      });
     }
   }
 
@@ -135,6 +143,14 @@ export class FormComponent {
     this.formService.formState.abilityOneCost.update((abilityOneCost) => {
       abilityOneCost.splice(index, 1);
       return abilityOneCost;
+    });
+    this.router.navigate([], {
+      queryParams: {
+        ...this.router.parseUrl(this.router.url).queryParams,
+        'abilityOneCost[]': this.formService.formState
+          .abilityOneCost()
+          .toString(),
+      },
     });
   }
 
@@ -144,6 +160,12 @@ export class FormComponent {
         abilityTwoCost.push(cost);
         return abilityTwoCost;
       });
+      this.router.navigate([], {
+        queryParams: {
+          ...this.router.parseUrl(this.router.url).queryParams,
+          'abilityTwoCost[]': this.formService.formState.abilityTwoCost(),
+        },
+      });
     }
   }
 
@@ -151,6 +173,12 @@ export class FormComponent {
     this.formService.formState.abilityTwoCost.update((abilityTwoCost) => {
       abilityTwoCost.splice(index, 1);
       return abilityTwoCost;
+    });
+    this.router.navigate([], {
+      queryParams: {
+        ...this.router.parseUrl(this.router.url).queryParams,
+        'abilityTwoCost[]': this.formService.formState.abilityTwoCost(),
+      },
     });
   }
 }
