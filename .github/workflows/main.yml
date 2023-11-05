@@ -16,6 +16,6 @@ jobs:
     - name: Install dependencies
       run: yarn install --frozen-lockfile
     - name: Build
-      run: yarn nx build team-booster-pack
+      run: yarn nx build pokemon-card-maker
     - name: Deploy
       run: yarn nx deploy pokemon-card-maker --base-href=https://jad31.github.io/pokemon-card-maker/
