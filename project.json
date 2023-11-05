@@ -107,6 +107,9 @@
       "options": {
         "buildTarget": "team-booster-pack:build"
       }
+    },
+    "deploy": {
+      "executor": "angular-cli-ghpages:deploy"
     }
   }
 }
