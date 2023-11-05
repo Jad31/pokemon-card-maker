@@ -15,8 +15,8 @@
     "skipDefaultLibCheck": true,
     "baseUrl": ".",
     "paths": {
-      "@team-booster-pack/download-card": ["libs/download-card/src/index.ts"],
-      "@team-booster-pack/form": ["libs/form/src/index.ts"]
+      "@pokemon-card-maker/download-card": ["libs/download-card/src/index.ts"],
+      "@pokemon-card-maker/form": ["libs/form/src/index.ts"]
     }
   },
   "exclude": ["node_modules", "tmp"]

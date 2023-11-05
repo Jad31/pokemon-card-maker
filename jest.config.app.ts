@@ -1,9 +1,9 @@
 /* eslint-disable */
 export default {
-  displayName: 'team-booster-pack',
+  displayName: 'pokemon-card-maker',
   preset: './jest.preset.js',
   setupFilesAfterEnv: ['<rootDir>/src/test-setup.ts'],
-  coverageDirectory: './coverage/team-booster-pack',
+  coverageDirectory: './coverage/pokemon-card-maker',
   transform: {
     '^.+\\.(ts|mjs|js|html)$': [
       'jest-preset-angular',

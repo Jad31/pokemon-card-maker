@@ -20,7 +20,7 @@
           "error",
           {
             "type": "element",
-            "prefix": "team-booster-pack",
+            "prefix": "pokemon-card-maker",
             "style": "kebab-case"
           }
         ]

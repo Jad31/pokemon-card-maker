@@ -1,6 +1,6 @@
 import { getGreeting } from '../support/app.po';
 
-describe('team-booster-pack', () => {
+describe('pokemon-card-maker', () => {
   beforeEach(() => cy.visit('/'));
 
   it('should display welcome message', () => {
@@ -8,6 +8,6 @@ describe('team-booster-pack', () => {
     cy.login('my-email@something.com', 'myPassword');
 
     // Function helper example, see `../support/app.po.ts` file
-    getGreeting().contains('Welcome team-booster-pack');
+    getGreeting().contains('Welcome pokemon-card-maker');
   });
 });

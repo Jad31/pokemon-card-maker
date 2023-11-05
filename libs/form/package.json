@@ -1,5 +1,5 @@
 {
-  "name": "@team-booster-pack/form",
+  "name": "@pokemon-card-maker/form",
   "version": "0.0.1",
   "peerDependencies": {
     "@angular/common": "^16.0.0",

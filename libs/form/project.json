@@ -2,7 +2,7 @@
   "name": "form",
   "$schema": "../../node_modules/nx/schemas/project-schema.json",
   "sourceRoot": "libs/form/src",
-  "prefix": "team-booster-pack",
+  "prefix": "pokemon-card-maker",
   "tags": [],
   "projectType": "library",
   "targets": {

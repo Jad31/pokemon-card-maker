@@ -2,7 +2,7 @@
   "name": "download-card",
   "$schema": "../../node_modules/nx/schemas/project-schema.json",
   "sourceRoot": "libs/download-card/src",
-  "prefix": "team-booster-pack",
+  "prefix": "pokemon-card-maker",
   "tags": [],
   "projectType": "library",
   "targets": {

@@ -24,7 +24,7 @@ import { Router, ActivatedRoute } from '@angular/router';
 import { Form } from './form.types';
 
 @Component({
-  selector: 'team-booster-pack-form',
+  selector: 'pokemon-card-maker-form',
   standalone: true,
   imports: [
     CommonModule,

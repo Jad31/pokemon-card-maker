@@ -6,8 +6,8 @@ import {
   NgClass,
   LowerCasePipe,
 } from '@angular/common';
-import { DownloadCardComponent } from '@team-booster-pack/download-card';
-import { FormComponent, FormService } from '@team-booster-pack/form';
+import { DownloadCardComponent } from '@pokemon-card-maker/download-card';
+import { FormComponent, FormService } from '@pokemon-card-maker/form';
 
 @Component({
   standalone: true,
@@ -20,7 +20,7 @@ import { FormComponent, FormService } from '@team-booster-pack/form';
     NgClass,
     LowerCasePipe,
   ],
-  selector: 'team-booster-pack-root',
+  selector: 'pokemon-card-maker-root',
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.scss'],
 })

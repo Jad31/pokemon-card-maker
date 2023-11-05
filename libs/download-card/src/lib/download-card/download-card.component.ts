@@ -8,7 +8,7 @@ import html2canvas from 'html2canvas';
 import { MatButtonModule } from '@angular/material/button';
 
 @Component({
-  selector: 'team-booster-pack-download-card',
+  selector: 'pokemon-card-maker-download-card',
   standalone: true,
   imports: [CommonModule, MatButtonModule],
   templateUrl: './download-card.component.html',
