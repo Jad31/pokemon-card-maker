@@ -69,7 +69,7 @@ MIT
 @angular/router
 MIT
 
-@team-booster-pack/form
+@pokemon-card-maker/form
 
 download-card
 
