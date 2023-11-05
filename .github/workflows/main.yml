@@ -10,8 +10,8 @@ jobs:
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v3
-    - name: All things angular
-      uses: AhsanAyaz/angular-deploy-gh-pages-actions@1.4.0 ## replace by latest version without it you will see Expected format {org}/{repo}[/path]@ref. Actual 'AhsanAyaz/angular-deploy-gh-pages-actions',Input string was not in a correct format.
+    - name: Angular Deploy gh-pages Actions
+      uses: AhsanAyaz/angular-deploy-gh-pages-actions@v1.4.0      
       with:
         github_access_token: ${{ secrets.GITHUB_TOKEN }} # see the Configuration section for how you can create secrets
         build_configuration: staging # The build environment for the app. please look configurations in your angular.json
