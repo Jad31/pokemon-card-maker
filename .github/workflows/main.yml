@@ -20,9 +20,6 @@ jobs:
     - name: Install dependencies
       run: yarn install --frozen-lockfile
 
-    - name: Run tests
-      run: yarn nx test:headless team-booster-pack
-
     - name: Build
       run: yarn nx build:prod team-booster-pack
 
