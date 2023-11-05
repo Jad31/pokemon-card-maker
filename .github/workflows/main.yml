@@ -21,7 +21,7 @@ jobs:
       run: yarn install --frozen-lockfile
 
     - name: Build
-      run: yarn nx build:prod team-booster-pack
+      run: yarn nx build team-booster-pack
 
     - name: Deploy
       if: success()
