@@ -24,6 +24,7 @@
     "@angular/platform-browser-dynamic": "~16.0.0",
     "@angular/router": "~16.0.0",
     "@nx/angular": "16.2.2",
+    "angular-cli-ghpages": "^1.0.7",
     "html2canvas": "^1.4.1",
     "ngx-image-cropper": "^7.1.0",
     "papaparse": "^5.4.1",
