@@ -57,9 +57,11 @@
           {{ formService.formState.abilityOneDescription() }}
         </p>
       </span>
-      <p class="ability-damage">
-        {{ formService.formState.abilityOneDamage() }}
-      </p>
+      <ng-container *ngIf="formService.formState.isAbilityOneDamageActive()">
+        <p class="ability-damage">
+          {{ formService.formState.abilityOneDamage() }}
+        </p>
+      </ng-container>
     </section>
     <section class="character-ability">
       <span class="ability-cost">
