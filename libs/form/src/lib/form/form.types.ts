@@ -11,6 +11,7 @@ export type Form = {
   abilityOneName: string;
   abilityOneDescription: string;
   abilityOneCost: string[];
+  isAbilityOneDamageActive: boolean;
   abilityOneDamage: number;
   abilityTwoName: string;
   abilityTwoDescription: string;
@@ -42,6 +43,7 @@ export const formInitialState: FormState = {
   fileType: signal<string>(''),
   abilityOneName: signal<string>(''),
   abilityOneDescription: signal<string>(''),
+  isAbilityOneDamageActive: signal<boolean>(true),
   abilityOneCost: signal<string[]>([]),
   abilityOneDamage: signal<number>(0),
   abilityTwoName: signal<string>(''),

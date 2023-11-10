@@ -1,4 +1,4 @@
-import { Component, inject } from '@angular/core';
+import { ChangeDetectionStrategy, Component, inject } from '@angular/core';
 import {
   NgOptimizedImage,
   NgForOf,
@@ -25,6 +25,7 @@ import { ResizeTextDirective } from '@pokemon-card-maker/resize-text';
   selector: 'pokemon-card-maker-root',
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.scss'],
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class AppComponent {
   formService = inject(FormService);
