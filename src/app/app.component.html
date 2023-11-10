@@ -6,11 +6,10 @@
   <div
     id="pokemon-card"
     class="pokemon-card"
-    [ngClass]="formService.formState.type()"
-  >
+    [ngClass]="formService.formState.type()">
     <section class="title-row">
       <p class="rarity">{{ formService.formState.stage() }}</p>
-      <h1 class="name" pokemonCardMakerResizeText="">
+      <h1 class="name" pokemonCardMakerResizeText>
         {{ formService.formState.name() }}
       </h1>
       <p class="health">{{ formService.formState.health() }} TJM</p>
@@ -20,8 +19,7 @@
           formService.formState.iconType() | lowercase
         }}-icon.png"
         width="25"
-        height="25"
-      />
+        height="25" />
     </section>
 
     <div class="character-img-background">
@@ -37,51 +35,49 @@
     <section class="character-ability">
       <span class="ability-cost">
         @for ( cost of formService.abilityCostOptions ; track $index) {
-          @if ($index < formService.formState.abilityOneCost().length) {
-            <img
-              ngSrc="assets/{{
+        @if ($index < formService.formState.abilityOneCost().length) {
+        <img
+          ngSrc="assets/{{
                 formService.formState.abilityOneCost()[$index] | lowercase
               }}-icon.png"
-              width="30"
-              height="30"
-            />
-           
-          }
+          width="30"
+          height="30" />
+
+        }
         }
       </span>
       <span class="ability-description">
         <span class="ability-name">{{
           formService.formState.abilityOneName()
-        }}</span>
+          }}</span>
         <p>
           {{ formService.formState.abilityOneDescription() }}
         </p>
       </span>
       @if (formService.formState.isAbilityOneDamageActive()) {
-        <p class="ability-damage">
-          {{ formService.formState.abilityOneDamage() }}
-        </p>
+      <p class="ability-damage">
+        {{ formService.formState.abilityOneDamage() }}
+      </p>
       }
     </section>
     <section class="character-ability">
       <span class="ability-cost">
         @for ( cost of formService.abilityCostOptions ; track $index) {
-          @if ($index < formService.formState.abilityTwoCost().length) {
-            <img
-              ngSrc="assets/{{
+        @if ($index < formService.formState.abilityTwoCost().length) {
+        <img
+          ngSrc="assets/{{
                 formService.formState.abilityTwoCost()[$index] | lowercase
               }}-icon.png"
-              width="30"
-              height="30"
-            />
-           
-          }
+          width="30"
+          height="30" />
+
+        }
         }
       </span>
       <span class="ability-description">
         <span class="ability-name">{{
           formService.formState.abilityTwoName()
-        }}</span>
+          }}</span>
         <p>
           {{ formService.formState.abilityTwoDescription() }}
         </p>
