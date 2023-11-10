@@ -1,4 +1,4 @@
-import { Component, inject } from '@angular/core';
+import { ChangeDetectionStrategy, Component, inject } from '@angular/core';
 import {
   NgOptimizedImage,
   NgForOf,
@@ -23,6 +23,7 @@ import { FormComponent, FormService } from '@pokemon-card-maker/form';
   selector: 'pokemon-card-maker-root',
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.scss'],
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class AppComponent {
   formService = inject(FormService);

@@ -139,6 +139,11 @@
       </div>
     </div>
 
+    <mat-checkbox
+      [checked]="formService.formState.isAbilityOneDamageActive()"
+      (change)="formFieldChange($event, 'isAbilityOneDamageActive')"
+      >Show Ability Damage</mat-checkbox
+    >
     <mat-form-field appearance="fill">
       <mat-label>Damage</mat-label>
       <input

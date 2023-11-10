@@ -1,7 +1,9 @@
 import {
   ChangeDetectionStrategy,
+  ChangeDetectorRef,
   Component,
   ViewEncapsulation,
+  effect,
   inject,
 } from '@angular/core';
 import { CommonModule, DecimalPipe, NgFor } from '@angular/common';
@@ -22,6 +24,10 @@ import {
 import { NgxMatFileInputModule } from '@angular-material-components/file-input';
 import { Router, ActivatedRoute } from '@angular/router';
 import { Form } from './form.types';
+import {
+  MatCheckboxChange,
+  MatCheckboxModule,
+} from '@angular/material/checkbox';
 
 @Component({
   selector: 'pokemon-card-maker-form',
@@ -39,6 +45,7 @@ import { Form } from './form.types';
     NgxMatFileInputModule,
     NgFor,
     DecimalPipe,
+    MatCheckboxModule,
   ],
   templateUrl: './form.component.html',
   styleUrls: ['./form.component.scss'],
@@ -50,7 +57,6 @@ export class FormComponent {
   sanitizer = inject(DomSanitizer);
   router = inject(Router);
   activatedRoute = inject(ActivatedRoute);
-
   step = 0;
   imageUrl = '';
   imageChangedEvent: any = '';
@@ -60,9 +66,19 @@ export class FormComponent {
     this.formService.updateFormStateFromQueryParams(this.activatedRoute);
   }
 
-  formFieldChange(event: Event, key: keyof Form) {
-    if (event.target instanceof HTMLInputElement) {
-      this.formService.formState[key].set(event.target.value as never);
+  formFieldChange(event: Event | MatCheckboxChange, key: keyof Form) {
+    if (event instanceof Event) {
+      if (event.target instanceof HTMLInputElement) {
+        this.formService.formState[key].set(event.target.value as never);
+        this.router.navigate([], {
+          queryParams: {
+            ...this.router.parseUrl(this.router.url).queryParams,
+            [key]: this.formService.formState[key](),
+          },
+        });
+      }
+    } else if (event instanceof MatCheckboxChange) {
+      this.formService.formState[key].set(event.checked as never);
       this.router.navigate([], {
         queryParams: {
           ...this.router.parseUrl(this.router.url).queryParams,
