@@ -88,6 +88,8 @@
   }
   .name {
     grid-area: name;
+    overflow: hidden;
+    margin: 0;
   }
   .health {
     grid-area: health;
@@ -95,6 +97,9 @@
     font-size: 20px;
     text-align: right;
     color: black;
+    margin-bottom: 0;
+    padding-bottom: 0;
+    align-self: center;
   }
   .type {
     grid-area: type;

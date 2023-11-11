@@ -28,7 +28,6 @@ export class FormService {
 
   updateFormStateFromQueryParams(route: ActivatedRoute) {
     return route.queryParamMap.subscribe((params) => {
-      console.log(params);
       // Loop through all the keys of formInitialState
       return Object.keys(formInitialState).forEach((key) => {
         const valueFromQuery = params.get(key);
@@ -36,7 +35,6 @@ export class FormService {
           valueFromQuery !== null
             ? valueFromQuery
             : formInitialState[key as keyof Form]();
-        console.log(valueToSet);
         (
           this.formState[key as keyof Form] as WritableSignal<Form[keyof Form]>
         ).set(valueToSet);

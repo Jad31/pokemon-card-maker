@@ -10,7 +10,9 @@
   >
     <section class="title-row">
       <p class="rarity">{{ formService.formState.stage() }}</p>
-      <h1 class="name">{{ formService.formState.name() }}</h1>
+      <h1 class="name" pokemonCardMakerResizeText="">
+        {{ formService.formState.name() }}
+      </h1>
       <p class="health">{{ formService.formState.health() }} TJM</p>
       <img
         class="element-icon"
