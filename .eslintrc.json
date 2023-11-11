@@ -12,7 +12,7 @@
           "error",
           {
             "type": "attribute",
-            "prefix": "teamBoosterPack",
+            "prefix": "pokemonCardMaker",
             "style": "camelCase"
           }
         ],
