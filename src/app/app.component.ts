@@ -8,7 +8,7 @@ import {
 } from '@angular/common';
 import { DownloadCardComponent } from '@pokemon-card-maker/download-card';
 import { FormComponent, FormService } from '@pokemon-card-maker/form';
-import { ResizeTextDirective } from './resize-text.directive';
+import { ResizeTextDirective } from '@pokemon-card-maker/resize-text';
 
 @Component({
   standalone: true,
