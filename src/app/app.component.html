@@ -35,6 +35,7 @@
     <section class="character-ability">
       <span class="ability-cost">
         @for ( cost of formService.abilityCostOptions ; track $index) {
+        <<<<<<< HEAD
         @if ($index < formService.formState.abilityOneCost().length) {
         <img
           ngSrc="assets/{{
@@ -44,6 +45,17 @@
           height="30" />
 
         }
+        =======
+        @if ($index < formService.formState.abilityOneCost().length) {
+        <img
+          ngSrc="assets/{{
+                formService.formState.abilityOneCost()[$index] | lowercase
+              }}-icon.png"
+          width="30"
+          height="30" />
+
+        }
+        >>>>>>> 095dab8 (feat: improve images performance)
         }
       </span>
       <span class="ability-description">
@@ -63,6 +75,7 @@
     <section class="character-ability">
       <span class="ability-cost">
         @for ( cost of formService.abilityCostOptions ; track $index) {
+        <<<<<<< HEAD
         @if ($index < formService.formState.abilityTwoCost().length) {
         <img
           ngSrc="assets/{{
@@ -72,6 +85,17 @@
           height="30" />
 
         }
+        =======
+        @if ($index < formService.formState.abilityTwoCost().length) {
+        <img
+          ngSrc="assets/{{
+                formService.formState.abilityTwoCost()[$index] | lowercase
+              }}-icon.png"
+          width="30"
+          height="30" />
+
+        }
+        >>>>>>> 095dab8 (feat: improve images performance)
         }
       </span>
       <span class="ability-description">
