@@ -13,11 +13,12 @@ jobs:
       uses: actions/setup-node@v3
       with:
         node-version: '18'
-        repo-token: ${{ secrets.GITHUB_TOKEN }}
         
     - name: Install dependencies
       run: yarn install --frozen-lockfile
     - name: Build
       run: yarn nx build pokemon-card-maker
     - name: Deploy
-      run: yarn nx deploy pokemon-card-maker --base-href=https://jad31.github.io/pokemon-card-maker/ --verbose
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      run: yarn nx deploy --no-silent pokemon-card-maker --base-href=https://jad31.github.io/pokemon-card-maker/ --name="Jad31" --email="jad.chahed@epitech.eu"
