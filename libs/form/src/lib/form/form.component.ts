@@ -23,7 +23,7 @@ import {
 } from 'ngx-image-cropper';
 import { NgxMatFileInputModule } from '@angular-material-components/file-input';
 import { Router, ActivatedRoute } from '@angular/router';
-import { Form } from './form.types';
+import { Form, FormFieldChangeEventTypes } from './form.types';
 import {
   MatCheckboxChange,
   MatCheckboxModule,
@@ -67,10 +67,11 @@ export class FormComponent {
     this.formService.updateFormStateFromQueryParams(this.activatedRoute);
   }
 
-  formFieldChange(event: Event | MatCheckboxChange, key: keyof Form) {
+  formFieldChange(event: FormFieldChangeEventTypes, key: keyof Form) {
     if (event instanceof Event) {
-      if (event.target instanceof HTMLInputElement) {
-        this.formService.formState[key].set(event.target.value as never);
+      const target = event.target;
+      if (target instanceof HTMLInputElement || target instanceof HTMLTextAreaElement) {
+        this.formService.formState[key].set(target.value as never);
         this.router.navigate([], {
           queryParams: {
             ...this.router.parseUrl(this.router.url).queryParams,
