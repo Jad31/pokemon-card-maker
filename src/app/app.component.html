@@ -16,9 +16,11 @@
       <p class="health">{{ formService.formState.health() }} TJM</p>
       <img
         class="element-icon"
-        src="assets/bashroom-{{
+        ngSrc="assets/bashroom-{{
           formService.formState.iconType() | lowercase
         }}-icon.png"
+        width="25"
+        height="25"
       />
     </section>
 
@@ -37,9 +39,11 @@
         @for ( cost of formService.abilityCostOptions ; track $index) {
           @if ($index < formService.formState.abilityOneCost().length) {
             <img
-              src="assets/{{
+              ngSrc="assets/{{
                 formService.formState.abilityOneCost()[$index] | lowercase
               }}-icon.png"
+              width="30"
+              height="30"
             />
            
           }
@@ -64,9 +68,11 @@
         @for ( cost of formService.abilityCostOptions ; track $index) {
           @if ($index < formService.formState.abilityTwoCost().length) {
             <img
-              src="assets/{{
+              ngSrc="assets/{{
                 formService.formState.abilityTwoCost()[$index] | lowercase
               }}-icon.png"
+              width="30"
+              height="30"
             />
            
           }
@@ -89,7 +95,6 @@
       <span class="character-stat">
         <p>location</p>
         <p>{{ formService.formState.location() }}</p>
-        <!-- <img class="element-icon" src="assets/bashroom-dark.png" /> -->
       </span>
       <span class="character-stat">
         <p>work environment</p>
@@ -98,7 +103,6 @@
       <span class="character-stat">
         <p>availability</p>
         <p>{{ formService.formState.availability() }}</p>
-        <!-- <img class="element-icon" src="assets/bashroom-dark.png" /> -->
       </span>
     </section>
 

@@ -6,7 +6,7 @@ import {
   effect,
   inject,
 } from '@angular/core';
-import { CommonModule, DecimalPipe, NgFor } from '@angular/common';
+import { CommonModule, DecimalPipe, NgFor, NgOptimizedImage } from '@angular/common';
 import { ReactiveFormsModule } from '@angular/forms';
 import { MatInputModule } from '@angular/material/input';
 import { MatFormFieldModule } from '@angular/material/form-field';
@@ -44,6 +44,7 @@ import {
     ImageCropperModule,
     NgxMatFileInputModule,
     NgFor,
+    NgOptimizedImage,
     DecimalPipe,
     MatCheckboxModule,
   ],
