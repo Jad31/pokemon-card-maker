@@ -20,4 +20,4 @@ jobs:
     - name: Build
       run: yarn nx build pokemon-card-maker
     - name: Deploy
-      run: yarn nx deploy pokemon-card-maker --base-href=https://jad31.github.io/pokemon-card-maker/
+      run: yarn nx deploy pokemon-card-maker --base-href=https://jad31.github.io/pokemon-card-maker/ --verbose
