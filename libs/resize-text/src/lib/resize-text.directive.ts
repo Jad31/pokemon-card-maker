@@ -41,8 +41,8 @@ export class ResizeTextDirective implements AfterViewInit {
     const font = window.getComputedStyle(element).font;
     const textWidth = this.getTextWidth(text, font);
     let currentFontSize = parseInt(font.split(' ')[0]);
-    const fontSizeIncrement = 0.1; // Smaller increment for more precision
-    const maxFontSize = 24; // Define a maximum font size as per your design
+    const fontSizeIncrement = 0.1;
+    const maxFontSize = 24;
 
     if (textWidth > h1Width && this.lastTextWidth < textWidth) {
       while (
