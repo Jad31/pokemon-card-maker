@@ -113,10 +113,12 @@
       <div class="cost-types">
         @for (cost of formService.abilityTypeCostOptions; track $index) {          
           <img
-            src="assets/{{
+            ngSrc="assets/{{
               formService.abilityTypeCostOptions[$index] | lowercase
             }}-icon.png"
             (click)="addAbilityOneCost(cost)"
+            width="25"
+            height="25"
           />
         }
       </div>
@@ -125,10 +127,12 @@
         <p>Cost:</p>
          @for (cost of formService.formState.abilityOneCost(); track $index) {
            <img
-             src="assets/{{
+           ngSrc="assets/{{
                formService.formState.abilityOneCost()[$index] | lowercase
              }}-icon.png"
              (click)="removeAbilityOneCost($index)"
+             width="25"
+             height="25"
            />
          }
       </div>
@@ -181,10 +185,12 @@
       <div class="cost-types">
         @for ( cost of formService.abilityTypeCostOptions ; track $index) {          
           <img
-            src="assets/{{
+            ngSrc="assets/{{
               formService.abilityTypeCostOptions[$index] | lowercase
             }}-icon.png"
             (click)="addAbilityTwoCost(cost)"
+            width="25"
+            height="25"
           />
         }
       </div>
@@ -193,10 +199,12 @@
         <p>Cost:</p>
         @for (cost of formService.formState.abilityTwoCost(); track $index) {
           <img
-            src="assets/{{
+            ngSrc="assets/{{
               formService.formState.abilityTwoCost()[$index] | lowercase
             }}-icon.png"
             (click)="removeAbilityTwoCost($index)"
+            width="25"
+            height="25"
           />
         }
       </div>
