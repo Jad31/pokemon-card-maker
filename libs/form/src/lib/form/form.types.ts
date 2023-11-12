@@ -1,4 +1,5 @@
 import { WritableSignal, signal } from '@angular/core';
+import { MatCheckboxChange } from '@angular/material/checkbox';
 
 export type Form = {
   name: string;
@@ -59,3 +60,5 @@ export const formInitialState: FormState = {
   company: signal<string>(''),
   cardNumber: signal<number>(0),
 };
+
+export type FormFieldChangeEventTypes = Event | MatCheckboxChange | InputEvent
