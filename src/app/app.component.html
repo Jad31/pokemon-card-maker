@@ -34,17 +34,16 @@
 
     <section class="character-ability">
       <span class="ability-cost">
-        <span *ngFor="let cost of formService.abilityCostOptions; index as i">
-          <ng-container
-            *ngIf="i < formService.formState.abilityOneCost().length"
-          >
+        @for ( cost of formService.abilityCostOptions ; track $index) {
+          @if ($index < formService.formState.abilityOneCost().length) {
             <img
               src="assets/{{
-                formService.formState.abilityOneCost()[i] | lowercase
+                formService.formState.abilityOneCost()[$index] | lowercase
               }}-icon.png"
             />
-          </ng-container>
-        </span>
+           
+          }
+        }
       </span>
       <span class="ability-description">
         <span class="ability-name">{{
@@ -62,17 +61,16 @@
     </section>
     <section class="character-ability">
       <span class="ability-cost">
-        <span *ngFor="let cost of formService.abilityCostOptions; index as i">
-          <ng-container
-            *ngIf="i < formService.formState.abilityTwoCost().length"
-          >
+        @for ( cost of formService.abilityCostOptions ; track $index) {
+          @if ($index < formService.formState.abilityTwoCost().length) {
             <img
               src="assets/{{
-                formService.formState.abilityTwoCost()[i] | lowercase
+                formService.formState.abilityTwoCost()[$index] | lowercase
               }}-icon.png"
             />
-          </ng-container>
-        </span>
+           
+          }
+        }
       </span>
       <span class="ability-description">
         <span class="ability-name">{{

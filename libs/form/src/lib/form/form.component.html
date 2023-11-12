@@ -22,9 +22,11 @@
         #iconTypeOptions
         (selectionChange)="changeCardType(iconTypeOptions.value)"
       >
-        <mat-option *ngFor="let type of formService.typeOptions" [value]="type">
+      @for (type of formService.typeOptions ; track type) {        
+        <mat-option [value]="type">
           {{ type | titlecase }}
         </mat-option>
+      }
       </mat-select>
     </mat-form-field>
     <mat-form-field appearance="fill">
@@ -109,33 +111,26 @@
     <p>Energy Cost</p>
     <div class="energy-cost">
       <div class="cost-types">
-        <div
-          *ngFor="let cost of formService.abilityTypeCostOptions; index as i"
-        >
+        @for (cost of formService.abilityTypeCostOptions; track $index) {          
           <img
             src="assets/{{
-              formService.abilityTypeCostOptions[i] | lowercase
+              formService.abilityTypeCostOptions[$index] | lowercase
             }}-icon.png"
             (click)="addAbilityOneCost(cost)"
           />
-        </div>
+        }
       </div>
       <hr style="width: 80%" />
       <div class="costs">
         <p>Cost:</p>
-        <div
-          *ngFor="
-            let cost of formService.formState.abilityOneCost();
-            index as i
-          "
-        >
-          <img
-            src="assets/{{
-              formService.formState.abilityOneCost()[i] | lowercase
-            }}-icon.png"
-            (click)="removeAbilityOneCost(i)"
-          />
-        </div>
+         @for (cost of formService.formState.abilityOneCost(); track $index) {
+           <img
+             src="assets/{{
+               formService.formState.abilityOneCost()[$index] | lowercase
+             }}-icon.png"
+             (click)="removeAbilityOneCost($index)"
+           />
+         }
       </div>
     </div>
 
@@ -189,33 +184,26 @@
     <p>Energy Cost</p>
     <div class="energy-cost">
       <div class="cost-types">
-        <div
-          *ngFor="let cost of formService.abilityTypeCostOptions; index as i"
-        >
+        @for ( cost of formService.abilityTypeCostOptions ; track $index) {          
           <img
             src="assets/{{
-              formService.abilityTypeCostOptions[i] | lowercase
+              formService.abilityTypeCostOptions[$index] | lowercase
             }}-icon.png"
             (click)="addAbilityTwoCost(cost)"
           />
-        </div>
+        }
       </div>
       <hr style="width: 80%" />
       <div class="costs">
         <p>Cost:</p>
-        <div
-          *ngFor="
-            let cost of formService.formState.abilityTwoCost();
-            index as i
-          "
-        >
+        @for (cost of formService.formState.abilityTwoCost(); track $index) {
           <img
             src="assets/{{
-              formService.formState.abilityTwoCost()[i] | lowercase
+              formService.formState.abilityTwoCost()[$index] | lowercase
             }}-icon.png"
-            (click)="removeAbilityTwoCost(i)"
+            (click)="removeAbilityTwoCost($index)"
           />
-        </div>
+        }
       </div>
     </div>
 
