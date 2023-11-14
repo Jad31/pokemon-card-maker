@@ -9,6 +9,7 @@ import {
 import { DownloadCardComponent } from '@pokemon-card-maker/download-card';
 import { FormComponent, FormService } from '@pokemon-card-maker/form';
 import { ResizeTextDirective } from '@pokemon-card-maker/resize-text';
+import { HeaderComponent } from '@pokemon-card-maker/header';
 
 @Component({
   standalone: true,
@@ -21,6 +22,7 @@ import { ResizeTextDirective } from '@pokemon-card-maker/resize-text';
     NgClass,
     LowerCasePipe,
     ResizeTextDirective,
+    HeaderComponent
   ],
   selector: 'pokemon-card-maker-root',
   templateUrl: './app.component.html',
