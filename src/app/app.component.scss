@@ -10,8 +10,8 @@
   height: 100vh; /* Optional: Take up the full viewport height */
   width: 100vw; /* Take up the full viewport width */
   grid-template-areas:
-    'pokemon-card form'
-    'pokemon-card form';
+    'form pokemon-card'
+    'form pokemon-card';
 }
 
 .pokemon-card {
