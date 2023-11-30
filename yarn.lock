@@ -6292,10 +6292,10 @@ cypress@^13.0.0:
     untildify "^4.0.0"
     yauzl "^2.10.0"
 
-daisyui@^4.0.1:
-  version "4.0.1"
-  resolved "https://registry.yarnpkg.com/daisyui/-/daisyui-4.0.1.tgz#ca0128bb6e9de547a95f20f0dc4bfb1208800338"
-  integrity sha512-ImgJOvcWjcK7jepOeP3T/WQZQ/kRF2YCwQPGIjto5URjdMhcr1xOctOZUz50/CYlAI2nYKJ1Y3r+Iznk0hMFCA==
+daisyui@^4.4.16:
+  version "4.4.16"
+  resolved "https://registry.yarnpkg.com/daisyui/-/daisyui-4.4.16.tgz#391bd1ae707f42966f42ada31f0cae98317430cd"
+  integrity sha512-6j1Ww08qbQhy6pS+z0hdgrA0Wnml3cOGpHzpKwRwtmYmGFKw/TQ68vm7L+/HoF/yiSkrK65JtluZK6ac52C8EQ==
   dependencies:
     css-selector-tokenizer "^0.8"
     culori "^3"
