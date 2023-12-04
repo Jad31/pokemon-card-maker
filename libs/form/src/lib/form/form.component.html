@@ -1,32 +1,47 @@
-<mat-progress-bar mode="determinate" [value]="step * 20"></mat-progress-bar>
-<mat-accordion>
-  <!-- Basic Information -->
-  <mat-expansion-panel [expanded]="step === 0" (opened)="setStep(0)" hideToggle>
+<div class="collapse bg-base-200">
+  <input type="checkbox" class="peer" />
+  <div
+    class="collapse-title">
+    Informations
+  </div>
+  <div
+    class="collapse-content">
+    <label class="label">
+      <span class="label-text">Name</span>
+    </label>
+    <input type="text"
+      class="input input-bordered w-full max-w-xs" #name
+      [value]="formService.formState.name()"
+      (input)="formFieldChange($event, 'name')" />
+
+    <label class="label">
+      <span class="label-text">Type</span>
+    </label>
+    <input type="text"
+      class="input input-bordered w-full max-w-xs" #name
+      [value]="formService.formState.name()"
+      (input)="formFieldChange($event, 'name')" />
+  </div>
+
+</div>
+
+<!-- <mat-accordion> -->
+<!-- Basic Information -->
+<!-- <mat-expansion-panel [expanded]="step === 0" (opened)="setStep(0)" hideToggle>
     <mat-expansion-panel-header>
       <mat-panel-title> Basic Information </mat-panel-title>
     </mat-expansion-panel-header>
 
     <mat-form-field appearance="fill">
-      <mat-label>Name</mat-label>
-      <input
-        matInput
-        #name
-        [value]="formService.formState.name()"
-        (input)="formFieldChange($event, 'name')"
-      />
-    </mat-form-field>
-
-    <mat-form-field appearance="fill">
       <mat-label>Type</mat-label>
       <mat-select
         #iconTypeOptions
-        (selectionChange)="changeCardType(iconTypeOptions.value)"
-      >
-      @for (type of formService.typeOptions ; track type) {        
+        (selectionChange)="changeCardType(iconTypeOptions.value)">
+        @for (type of formService.typeOptions ; track type) {
         <mat-option [value]="type">
           {{ type | titlecase }}
         </mat-option>
-      }
+        }
       </mat-select>
     </mat-form-field>
     <mat-form-field appearance="fill">
@@ -35,31 +50,28 @@
         matInput
         #stage
         [value]="formService.formState.stage()"
-        (input)="formFieldChange($event, 'stage')"
-      />
+        (input)="formFieldChange($event, 'stage')" />
     </mat-form-field>
 
     <mat-form-field appearance="fill">
       <mat-label>Health</mat-label>
-      <!-- TODO Make health a string in state -->
       <input
         matInput
         #health
         [value]="formService.formState.health()"
         (input)="formFieldChange($event, 'health')"
         type="number"
-        min="0"
-      />
+        min="0" />
     </mat-form-field>
 
     <mat-action-row>
       <button mat-button color="primary" (click)="nextStep()">Next</button>
     </mat-action-row>
-  </mat-expansion-panel>
+  </mat-expansion-panel> -->
 
-  <!-- Picture -->
+<!-- Picture -->
 
-  <mat-expansion-panel [expanded]="step === 1" (opened)="setStep(1)" hideToggle>
+<!-- <mat-expansion-panel [expanded]="step === 1" (opened)="setStep(1)" hideToggle>
     <mat-expansion-panel-header>
       <mat-panel-title> Picture </mat-panel-title>
     </mat-expansion-panel-header>
@@ -73,16 +85,15 @@
       (imageCropped)="imageCropped($event)"
       (imageLoaded)="imageLoaded($event)"
       (cropperReady)="cropperReady()"
-      (loadImageFailed)="loadImageFailed()"
-    ></image-cropper>
+      (loadImageFailed)="loadImageFailed()"></image-cropper>
 
     <mat-action-row>
       <button mat-button color="primary" (click)="nextStep()">Next</button>
     </mat-action-row>
-  </mat-expansion-panel>
+  </mat-expansion-panel> -->
 
-  <!-- Feature One -->
-  <mat-expansion-panel [expanded]="step === 2" (opened)="setStep(2)" hideToggle>
+<!-- Feature One -->
+<!-- <mat-expansion-panel [expanded]="step === 2" (opened)="setStep(2)" hideToggle>
     <mat-expansion-panel-header>
       <mat-panel-title> Ability One </mat-panel-title>
     </mat-expansion-panel-header>
@@ -93,8 +104,7 @@
         matInput
         #abilityOneName
         [value]="formService.formState.abilityOneName()"
-        (input)="formFieldChange($event, 'abilityOneName')"
-      />
+        (input)="formFieldChange($event, 'abilityOneName')" />
     </mat-form-field>
 
     <mat-form-field appearance="fill">
@@ -103,46 +113,42 @@
         matInput
         #abilityOneDescription
         [value]="formService.formState.abilityOneDescription()"
-        (input)="formFieldChange($event, 'abilityOneDescription')"
-      >
+        (input)="formFieldChange($event, 'abilityOneDescription')">
       </textarea>
     </mat-form-field>
 
     <p>Energy Cost</p>
     <div class="energy-cost">
       <div class="cost-types">
-        @for (cost of formService.abilityTypeCostOptions; track $index) {          
-          <img
-            ngSrc="assets/{{
+        @for (cost of formService.abilityTypeCostOptions; track $index) {
+        <img
+          ngSrc="assets/{{
               formService.abilityTypeCostOptions[$index] | lowercase
             }}-icon.png"
-            (click)="addAbilityOneCost(cost)"
-            width="25"
-            height="25"
-          />
+          (click)="addAbilityOneCost(cost)"
+          width="25"
+          height="25" />
         }
       </div>
       <hr style="width: 80%" />
       <div class="costs">
         <p>Cost:</p>
-         @for (cost of formService.formState.abilityOneCost(); track $index) {
-           <img
-           ngSrc="assets/{{
+        @for (cost of formService.formState.abilityOneCost(); track $index) {
+        <img
+          ngSrc="assets/{{
                formService.formState.abilityOneCost()[$index] | lowercase
              }}-icon.png"
-             (click)="removeAbilityOneCost($index)"
-             width="25"
-             height="25"
-           />
-         }
+          (click)="removeAbilityOneCost($index)"
+          width="25"
+          height="25" />
+        }
       </div>
     </div>
 
     <mat-checkbox
       [checked]="formService.formState.isAbilityOneDamageActive()"
-      (change)="formFieldChange($event, 'isAbilityOneDamageActive')"
-      >Show Ability Damage</mat-checkbox
-    >
+      (change)="formFieldChange($event, 'isAbilityOneDamageActive')">Show
+      Ability Damage</mat-checkbox>
     <mat-form-field appearance="fill">
       <mat-label>Damage</mat-label>
       <input
@@ -151,16 +157,15 @@
         [value]="formService.formState.abilityOneDamage()"
         (input)="formFieldChange($event, 'abilityOneDamage')"
         type="number"
-        min="0"
-      />
+        min="0" />
     </mat-form-field>
     <mat-action-row>
       <button mat-button color="primary" (click)="nextStep()">Next</button>
     </mat-action-row>
-  </mat-expansion-panel>
+  </mat-expansion-panel> -->
 
-  <!-- Feature Two -->
-  <mat-expansion-panel [expanded]="step === 3" (opened)="setStep(3)" hideToggle>
+<!-- Feature Two -->
+<!-- <mat-expansion-panel [expanded]="step === 3" (opened)="setStep(3)" hideToggle>
     <mat-expansion-panel-header>
       <mat-panel-title> Ability Two </mat-panel-title>
     </mat-expansion-panel-header>
@@ -171,8 +176,7 @@
         matInput
         #abilityTwoName
         [value]="formService.formState.abilityTwoName()"
-        (input)="formFieldChange($event, 'abilityTwoName')"
-      />
+        (input)="formFieldChange($event, 'abilityTwoName')" />
     </mat-form-field>
 
     <mat-form-field appearance="fill">
@@ -181,36 +185,33 @@
         matInput
         #abilityTwoDescription
         [value]="formService.formState.abilityTwoDescription()"
-        (input)="formFieldChange($event, 'abilityTwoDescription')"
-      >
+        (input)="formFieldChange($event, 'abilityTwoDescription')">
       </textarea>
     </mat-form-field>
     <p>Energy Cost</p>
     <div class="energy-cost">
       <div class="cost-types">
-        @for ( cost of formService.abilityTypeCostOptions ; track $index) {          
-          <img
-            ngSrc="assets/{{
+        @for ( cost of formService.abilityTypeCostOptions ; track $index) {
+        <img
+          ngSrc="assets/{{
               formService.abilityTypeCostOptions[$index] | lowercase
             }}-icon.png"
-            (click)="addAbilityTwoCost(cost)"
-            width="25"
-            height="25"
-          />
+          (click)="addAbilityTwoCost(cost)"
+          width="25"
+          height="25" />
         }
       </div>
       <hr style="width: 80%" />
       <div class="costs">
         <p>Cost:</p>
         @for (cost of formService.formState.abilityTwoCost(); track $index) {
-          <img
-            ngSrc="assets/{{
+        <img
+          ngSrc="assets/{{
               formService.formState.abilityTwoCost()[$index] | lowercase
             }}-icon.png"
-            (click)="removeAbilityTwoCost($index)"
-            width="25"
-            height="25"
-          />
+          (click)="removeAbilityTwoCost($index)"
+          width="25"
+          height="25" />
         }
       </div>
     </div>
@@ -223,16 +224,15 @@
         [value]="formService.formState.abilityTwoDamage()"
         (input)="formFieldChange($event, 'abilityTwoDamage')"
         type="number"
-        min="0"
-      />
+        min="0" />
     </mat-form-field>
     <mat-action-row>
       <button mat-button color="primary" (click)="nextStep()">Next</button>
     </mat-action-row>
-  </mat-expansion-panel>
+  </mat-expansion-panel> -->
 
-  <!-- Location, Work Environment, Availability -->
-  <mat-expansion-panel [expanded]="step === 4" (opened)="setStep(4)" hideToggle>
+<!-- Location, Work Environment, Availability -->
+<!-- <mat-expansion-panel [expanded]="step === 4" (opened)="setStep(4)" hideToggle>
     <mat-expansion-panel-header>
       <mat-panel-title>
         Location, Work Environment, and Availability
@@ -245,8 +245,7 @@
         matInput
         #location
         [value]="formService.formState.location()"
-        (input)="formFieldChange($event, 'location')"
-      />
+        (input)="formFieldChange($event, 'location')" />
     </mat-form-field>
 
     <mat-form-field appearance="fill">
@@ -256,8 +255,7 @@
         #workEnvironment
         environment
         [value]="formService.formState.workEnvironment()"
-        (input)="formFieldChange($event, 'workEnvironment')"
-      />
+        (input)="formFieldChange($event, 'workEnvironment')" />
     </mat-form-field>
 
     <mat-form-field appearance="fill">
@@ -266,16 +264,15 @@
         matInput
         #availability
         [value]="formService.formState.availability()"
-        (input)="formFieldChange($event, 'availability')"
-      />
+        (input)="formFieldChange($event, 'availability')" />
     </mat-form-field>
     <mat-action-row>
       <button mat-button color="primary" (click)="nextStep()">Next</button>
     </mat-action-row>
-  </mat-expansion-panel>
+  </mat-expansion-panel> -->
 
-  <!-- Additionals -->
-  <mat-expansion-panel [expanded]="step === 5" (opened)="setStep(5)" hideToggle>
+<!-- Additionals -->
+<!-- <mat-expansion-panel [expanded]="step === 5" (opened)="setStep(5)" hideToggle>
     <mat-expansion-panel-header>
       <mat-panel-title> Additional Information </mat-panel-title>
     </mat-expansion-panel-header>
@@ -286,8 +283,7 @@
         matInput
         #upperText
         [value]="formService.formState.upperText()"
-        (input)="formFieldChange($event, 'upperText')"
-      ></textarea>
+        (input)="formFieldChange($event, 'upperText')"></textarea>
     </mat-form-field>
 
     <mat-form-field appearance="fill">
@@ -296,8 +292,7 @@
         matInput
         #lowerText
         [value]="formService.formState.lowerText()"
-        (input)="formFieldChange($event, 'lowerText')"
-      >
+        (input)="formFieldChange($event, 'lowerText')">
       </textarea>
     </mat-form-field>
 
@@ -307,8 +302,7 @@
         matInput
         #illustrator
         [value]="formService.formState.illustrator()"
-        (input)="formFieldChange($event, 'illustrator')"
-      />
+        (input)="formFieldChange($event, 'illustrator')" />
     </mat-form-field>
 
     <mat-form-field appearance="fill">
@@ -317,8 +311,7 @@
         matInput
         #company
         [value]="formService.formState.company()"
-        (input)="formFieldChange($event, 'company')"
-      />
+        (input)="formFieldChange($event, 'company')" />
     </mat-form-field>
     <mat-form-field appearance="fill">
       <mat-label>Card Number</mat-label>
@@ -328,11 +321,10 @@
         [value]="formService.formState.cardNumber()"
         (input)="formFieldChange($event, 'cardNumber')"
         type="number"
-        min="0"
-      />
+        min="0" />
     </mat-form-field>
     <mat-action-row>
       <button mat-button color="primary" (click)="nextStep()">Next</button>
     </mat-action-row>
-  </mat-expansion-panel>
-</mat-accordion>
+  </mat-expansion-panel> -->
+<!-- </mat-accordion> -->

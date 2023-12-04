@@ -15,6 +15,7 @@
     "skipDefaultLibCheck": true,
     "baseUrl": ".",
     "paths": {
+      "@pokemon-card-maker/card": ["libs/card/src/index.ts"],
       "@pokemon-card-maker/download-card": ["libs/download-card/src/index.ts"],
       "@pokemon-card-maker/form": ["libs/form/src/index.ts"],
       "@pokemon-card-maker/header": ["libs/header/src/index.ts"],

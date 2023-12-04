@@ -1,7 +1,7 @@
 {
-  "name": "resize-text",
+  "name": "card",
   "$schema": "../../node_modules/nx/schemas/project-schema.json",
-  "sourceRoot": "libs/resize-text/src",
+  "sourceRoot": "libs/card/src",
   "prefix": "pokemon-card-maker",
   "tags": [],
   "projectType": "library",
@@ -10,14 +10,14 @@
       "executor": "@nx/angular:package",
       "outputs": ["{workspaceRoot}/dist/{projectRoot}"],
       "options": {
-        "project": "libs/resize-text/ng-package.json"
+        "project": "libs/card/ng-package.json"
       },
       "configurations": {
         "production": {
-          "tsConfig": "libs/resize-text/tsconfig.lib.prod.json"
+          "tsConfig": "libs/card/tsconfig.lib.prod.json"
         },
         "development": {
-          "tsConfig": "libs/resize-text/tsconfig.lib.json"
+          "tsConfig": "libs/card/tsconfig.lib.json"
         }
       },
       "defaultConfiguration": "production"
@@ -26,7 +26,7 @@
       "executor": "@nx/jest:jest",
       "outputs": ["{workspaceRoot}/coverage/{projectRoot}"],
       "options": {
-        "jestConfig": "libs/resize-text/jest.config.ts"
+        "jestConfig": "libs/card/jest.config.ts"
       }
     },
     "lint": {
@@ -34,8 +34,9 @@
       "outputs": ["{options.outputFile}"],
       "options": {
         "lintFilePatterns": [
-          "libs/resize-text/**/*.ts",
-          "libs/resize-text/**/*.html"
+          "libs/card/**/*.ts",
+          "libs/card/**/*.html",
+          "libs/card/package.json"
         ]
       }
     }
