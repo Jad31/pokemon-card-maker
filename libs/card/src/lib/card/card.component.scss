@@ -1,6 +1,5 @@
 a.pokemon-card {
   grid-area: pokemon-card;
-  display: grid;
   width: 450px;
   min-width: 450px;
   height: 672px;
@@ -19,7 +18,7 @@ a.pokemon-card {
     left: 0;
     width: 100%;
     height: 100%;
-    background-image: url('./../assets/background-light.jpg');
+    background-image: url('/assets/background-light.jpg');
     background-size: cover;
     z-index: -1;
     filter: hue-rotate(140deg);
@@ -28,7 +27,7 @@ a.pokemon-card {
 
 .pokemon-card.light {
   & {
-    background-image: url('./../assets/background-light.jpg');
+    background-image: url('/assets/background-light.jpg');
   }
   .title-row .health {
     color: black;
@@ -39,7 +38,7 @@ a.pokemon-card {
 /* Dark Theme */
 .pokemon-card.dark {
   & {
-    background-image: url('./../assets/background-dark.jpg'); // Adjust this to your dark theme background
+    background-image: url('/assets/background-dark.jpg'); // Adjust this to your dark theme background
   }
   color: #eaeaea; // Assuming you want #eaeaea color in dark theme
   .title-row .health {
@@ -50,7 +49,7 @@ a.pokemon-card {
     color: black;
   }
   .character-description {
-    background-image: url('./../assets/background-dark.jpg');
+    background-image: url('/assets/background-dark.jpg');
   }
 }
 
@@ -221,7 +220,7 @@ a.pokemon-card {
   text-overflow: ellipsis;
   display: grid;
   align-items: center;
-  background-image: url('./../assets/background-light.jpg');
+  background-image: url('/assets/background-light.jpg');
   p {
     font-style: italic;
     font-size: 12px;

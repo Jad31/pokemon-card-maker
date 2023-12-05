@@ -1,15 +1,16 @@
-import { ChangeDetectionStrategy, Component, inject } from '@angular/core';
 import {
-  NgOptimizedImage,
+  LowerCasePipe,
+  NgClass,
   NgForOf,
   NgIf,
-  NgClass,
-  LowerCasePipe,
+  NgOptimizedImage,
 } from '@angular/common';
+import { ChangeDetectionStrategy, Component, inject } from '@angular/core';
+import { CardComponent } from '@pokemon-card-maker/card';
 import { DownloadCardComponent } from '@pokemon-card-maker/download-card';
 import { FormComponent, FormService } from '@pokemon-card-maker/form';
-import { ResizeTextDirective } from '@pokemon-card-maker/resize-text';
 import { HeaderComponent } from '@pokemon-card-maker/header';
+import { ResizeTextDirective } from '@pokemon-card-maker/resize-text';
 
 @Component({
   standalone: true,
@@ -22,7 +23,8 @@ import { HeaderComponent } from '@pokemon-card-maker/header';
     NgClass,
     LowerCasePipe,
     ResizeTextDirective,
-    HeaderComponent
+    HeaderComponent,
+    CardComponent,
   ],
   selector: 'pokemon-card-maker-root',
   templateUrl: './app.component.html',

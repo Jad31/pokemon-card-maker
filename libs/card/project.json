@@ -10,7 +10,8 @@
       "executor": "@nx/angular:package",
       "outputs": ["{workspaceRoot}/dist/{projectRoot}"],
       "options": {
-        "project": "libs/card/ng-package.json"
+        "project": "libs/card/ng-package.json",
+        "assets": ["src/assets"]
       },
       "configurations": {
         "production": {
