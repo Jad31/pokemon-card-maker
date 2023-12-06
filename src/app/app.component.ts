@@ -7,7 +7,6 @@ import {
 } from '@angular/common';
 import { ChangeDetectionStrategy, Component, inject } from '@angular/core';
 import { CardComponent } from '@pokemon-card-maker/card';
-import { DownloadCardComponent } from '@pokemon-card-maker/download-card';
 import { FormComponent, FormService } from '@pokemon-card-maker/form';
 import { HeaderComponent } from '@pokemon-card-maker/header';
 import { ResizeTextDirective } from '@pokemon-card-maker/resize-text';
@@ -17,7 +16,6 @@ import { ResizeTextDirective } from '@pokemon-card-maker/resize-text';
   imports: [
     NgOptimizedImage,
     FormComponent,
-    DownloadCardComponent,
     NgForOf,
     NgIf,
     NgClass,

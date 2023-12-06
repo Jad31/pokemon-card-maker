@@ -2,7 +2,11 @@
 module.exports = {
   content: ['./{libs,src}/**/*.{html,ts,js}'],
   theme: {
-    extend: {},
+    extend: {
+      gridTemplateColumns: {
+        'form-card': '350px 450px',
+      },
+    },
   },
   plugins: [require('daisyui')],
   daisyui: {
