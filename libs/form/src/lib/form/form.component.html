@@ -17,14 +17,15 @@
           <span class="label-text">Name</span>
         </label>
         <input type="text"
-          class="input input-bordered w-full max-w-xs" #name
+          class="input input-bordered w-full max-w-xs bg-input" #name
           [value]="formService.formState.name()"
           (input)="formFieldChange($event, 'name')" />
 
         <label class="label">
           <span class="label-text">Type</span>
         </label>
-        <select class="select select-bordered w-full max-w-xs" #iconTypeOptions
+        <select class="select select-bordered w-full max-w-xs bg-input"
+          #iconTypeOptions
           (change)="changeCardType(iconTypeOptions.value)">
           @for (type of formService.typeOptions ; track type) {
           <option [value]="type">
@@ -36,14 +37,14 @@
           <span class="label-text">Stage</span>
         </label>
         <input type="text"
-          class="input input-bordered w-full max-w-xs" #stage
+          class="input input-bordered w-full max-w-xs bg-input" #stage
           [value]="formService.formState.stage()"
           (input)="formFieldChange($event, 'stage')" />
         <label class="label">
           <span class="label-text">Health</span>
         </label>
         <input type="text"
-          class="input input-bordered w-full max-w-xs" #health
+          class="input input-bordered w-full max-w-xs bg-input" #health
           [value]="formService.formState.health()"
           (input)="formFieldChange($event, 'health')" />
       </div>
@@ -60,7 +61,7 @@
       <div
         class="collapse-content bg-white/[0.33] rounded-md">
         <input #characterImage type="file"
-          class="file-input file-input-bordered file-input-sm w-full max-w-xs"
+          class="file-input file-input-bordered file-input-sm w-full max-w-xs bg-input"
           (change)="fileChangeEvent($event)" />
 
         <image-cropper
@@ -89,7 +90,7 @@
           <span class="label-text">Name</span>
         </label>
         <input type="text"
-          class="input input-bordered w-full max-w-xs" #abilityOneName
+          class="input input-bordered w-full max-w-xs bg-input" #abilityOneName
           [value]="formService.formState.abilityOneName()"
           (input)="formFieldChange($event, 'abilityOneName')" />
 
@@ -97,7 +98,7 @@
           <span class="label-text">Description</span>
         </label>
         <textarea
-          class="textarea textarea-bordered w-full max-w-xs"
+          class="textarea textarea-bordered w-full max-w-xs bg-input"
           #abilityOneDescription
           [value]="formService.formState.abilityOneDescription()"
           (input)="formFieldChange($event, 'abilityOneDescription')"></textarea>
@@ -106,9 +107,9 @@
           <span class="label-text">Type</span>
         </label>
         <div
-          class="flex flex-col h-fit w-full rounded-lg border-2 border-black border-solid">
+          class="flex flex-col h-fit w-full p-2 rounded-lg border-2 border-black border-solid bg-input">
           <div
-            class="flex flex-row h-[65%] flex-wrap p-2 content-start">
+            class="flex flex-row h-[65%] flex-wrap content-start">
             @for (cost of formService.abilityTypeCostOptions; track $index) {
             <img
               class="m-1.5 w-[25px] hover:cursor-pointer"
@@ -119,17 +120,20 @@
               width="25"
               height="25" />
             }
+            <div></div>
           </div>
-          <hr style="width: 80%" />
-          <div class="flex flex-row h-[35%] items-center px-10">
+          <div class="divider m-1"></div>
+          <div
+            class="flex h-[25px] p-1 flew-wrap items-center justify-start">
             <p>Cost:</p>
-            @for (cost of formService.formState.abilityOneCost(); track $index)
+            @for (cost of formService.formState.abilityOneCost(); track
+            $index)
             {
             <img
               class="m-1.5 w-[25px] hover:cursor-pointer"
               ngSrc="assets/{{
-                     formService.formState.abilityOneCost()[$index] | lowercase
-                   }}-icon.png"
+                   formService.formState.abilityOneCost()[$index] | lowercase
+                 }}-icon.png"
               (click)="removeAbilityOneCost($index)"
               width="25"
               height="25" />
@@ -154,7 +158,7 @@
           <span class="label-text">Name</span>
         </label>
         <input type="text"
-          class="input input-bordered w-full max-w-xs" #abilityTwoName
+          class="input input-bordered w-full max-w-xs bg-input" #abilityTwoName
           [value]="formService.formState.abilityTwoName()"
           (input)="formFieldChange($event, 'abilityTwoName')" />
 
@@ -162,7 +166,7 @@
           <span class="label-text">Description</span>
         </label>
         <textarea
-          class="textarea textarea-bordered w-full max-w-xs"
+          class="textarea textarea-bordered w-full max-w-xs bg-input"
           #abilityTwoDescription
           [value]="formService.formState.abilityTwoDescription()"
           (input)="formFieldChange($event, 'abilityTwoDescription')"></textarea>
@@ -171,9 +175,9 @@
           <span class="label-text">Type</span>
         </label>
         <div
-          class="flex flex-col h-fit w-full rounded-lg border-2 border-black border-solid">
+          class="flex flex-col h-fit w-full p-2 rounded-lg border-2 border-black border-solid bg-input">
           <div
-            class="flex flex-row h-[65%] flex-wrap p-2 content-start">
+            class="flex flex-row h-[65%] flex-wrap content-start">
             @for (cost of formService.abilityTypeCostOptions; track $index) {
             <img
               class="m-1.5 w-[25px] hover:cursor-pointer"
@@ -187,15 +191,17 @@
             <div></div>
           </div>
           <div class="divider m-1"></div>
-          <div class="flex flex-row h-[35%] items-center px-10">
+          <div
+            class="flex h-[25px] p-1 flew-wrap items-center justify-start">
             <p>Cost:</p>
-            @for (cost of formService.formState.abilityTwoCost(); track $index)
+            @for (cost of formService.formState.abilityTwoCost(); track
+            $index)
             {
             <img
               class="m-1.5 w-[25px] hover:cursor-pointer"
               ngSrc="assets/{{
-                       formService.formState.abilityTwoCost()[$index] | lowercase
-                     }}-icon.png"
+                     formService.formState.abilityTwoCost()[$index] | lowercase
+                   }}-icon.png"
               (click)="removeAbilityTwoCost($index)"
               width="25"
               height="25" />
@@ -220,21 +226,21 @@
           <span class="label-text">Location</span>
         </label>
         <input type="text"
-          class="input input-bordered w-full max-w-xs" #location
+          class="input input-bordered w-full max-w-xs bg-input" #location
           [value]="formService.formState.location()"
           (input)="formFieldChange($event, 'location')" />
         <label class="label">
           <span class="label-text">Work Environment</span>
         </label>
         <input type="text"
-          class="input input-bordered w-full max-w-xs" #workEnvironment
+          class="input input-bordered w-full max-w-xs bg-input" #workEnvironment
           [value]="formService.formState.workEnvironment()"
           (input)="formFieldChange($event, 'workEnvironment')" />
         <label class="label">
           <span class="label-text">Availability</span>
         </label>
         <input type="text"
-          class="input input-bordered w-full max-w-xs" #availability
+          class="input input-bordered w-full max-w-xs bg-input" #availability
           [value]="formService.formState.availability()"
           (input)="formFieldChange($event, 'availability')" />
       </div>
@@ -254,35 +260,35 @@
           <span class="label-text">Upper Text</span>
         </label>
         <input type="text"
-          class="input input-bordered w-full max-w-xs" #upperText
+          class="input input-bordered w-full max-w-xs bg-input" #upperText
           [value]="formService.formState.upperText()"
           (input)="formFieldChange($event, 'upperText')" />
         <label class="label">
           <span class="label-text">Lower Text</span>
         </label>
         <input type="text"
-          class="input input-bordered w-full max-w-xs" #lowerText
+          class="input input-bordered w-full max-w-xs bg-input" #lowerText
           [value]="formService.formState.lowerText()"
           (input)="formFieldChange($event, 'lowerText')" />
         <label class="label">
           <span class="label-text">Illustrator</span>
         </label>
         <input type="text"
-          class="input input-bordered w-full max-w-xs" #illustrator
+          class="input input-bordered w-full max-w-xs bg-input" #illustrator
           [value]="formService.formState.illustrator()"
           (input)="formFieldChange($event, 'illustrator')" />
         <label class="label">
           <span class="label-text">Company</span>
         </label>
         <input type="text"
-          class="input input-bordered w-full max-w-xs" #company
+          class="input input-bordered w-full max-w-xs bg-input" #company
           [value]="formService.formState.company()"
           (input)="formFieldChange($event, 'company')" />
         <label class="label">
           <span class="label-text">Card Number</span>
         </label>
         <input type="text"
-          class="input input-bordered w-full max-w-xs" #cardNumber
+          class="input input-bordered w-full max-w-xs bg-input" #cardNumber
           [value]="formService.formState.cardNumber()"
           (input)="formFieldChange($event, 'cardNumber')" />
       </div>

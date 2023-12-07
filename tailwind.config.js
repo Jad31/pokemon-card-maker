@@ -6,6 +6,9 @@ module.exports = {
       gridTemplateColumns: {
         'form-card': '350px 450px',
       },
+      backgroundColor: {
+        input: 'rgba(255, 255, 255, 0.33)',
+      },
     },
   },
   plugins: [require('daisyui')],

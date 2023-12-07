@@ -1,4 +1,3 @@
-import { NgxMatFileInputModule } from '@angular-material-components/file-input';
 import {
   CommonModule,
   DecimalPipe,
@@ -12,16 +11,7 @@ import {
   inject,
 } from '@angular/core';
 import { ReactiveFormsModule } from '@angular/forms';
-import { MatButtonModule } from '@angular/material/button';
-import {
-  MatCheckboxChange,
-  MatCheckboxModule,
-} from '@angular/material/checkbox';
-import { MatExpansionModule } from '@angular/material/expansion';
-import { MatFormFieldModule } from '@angular/material/form-field';
-import { MatInputModule } from '@angular/material/input';
-import { MatProgressBarModule } from '@angular/material/progress-bar';
-import { MatSelectModule } from '@angular/material/select';
+import { MatCheckboxChange } from '@angular/material/checkbox';
 import { DomSanitizer } from '@angular/platform-browser';
 import { ActivatedRoute, Router } from '@angular/router';
 import { DownloadCardComponent } from '@pokemon-card-maker/download-card';
@@ -39,18 +29,10 @@ import { Form, FormFieldChangeEventTypes } from './form.types';
   imports: [
     CommonModule,
     ReactiveFormsModule,
-    MatInputModule,
-    MatFormFieldModule,
-    MatExpansionModule,
-    MatButtonModule,
-    MatProgressBarModule,
-    MatSelectModule,
     ImageCropperModule,
-    NgxMatFileInputModule,
     NgFor,
     NgOptimizedImage,
     DecimalPipe,
-    MatCheckboxModule,
     DownloadCardComponent,
   ],
   templateUrl: './form.component.html',
