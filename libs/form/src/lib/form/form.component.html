@@ -1,6 +1,6 @@
 
 <div
-  class="flex flex-col p-4 overflow-auto justify-between h-full max-h-[560px] bg-white/[0.4] backdrop-blur-sm backdrop-saturate-[100%] rounded-lg">
+  class="flex flex-col p-4 overflow-auto justify-between h-full max-h-[560px] bg-white/[0.4] backdrop-blur-sm backdrop-saturate-[100%] rounded-xl">
   <div
     class="gap-4 h-fit overflow-y-scroll">
     <!-- Basic Information -->
@@ -61,9 +61,10 @@
       <div
         class="collapse-content bg-white/[0.33] rounded-md">
         <input #characterImage type="file"
-          class="file-input file-input-bordered file-input-sm w-full max-w-xs bg-input"
+          class="file-input file-input-bordered mt-4 file-input-sm w-full max-w-xs bg-input"
           (change)="fileChangeEvent($event)" />
 
+        @if (imageChangedEvent) {
         <image-cropper
           [imageChangedEvent]="imageChangedEvent"
           [maintainAspectRatio]="true"
@@ -72,7 +73,8 @@
           (imageCropped)="imageCropped($event)"
           (imageLoaded)="imageLoaded($event)"
           (cropperReady)="cropperReady()"
-          (loadImageFailed)="loadImageFailed()"></image-cropper>
+          (loadImageFailed)="loadImageFailed()" />
+        }
       </div>
     </div>
 
