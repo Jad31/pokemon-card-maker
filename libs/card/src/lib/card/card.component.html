@@ -1,4 +1,5 @@
-<div
+<!-- <div
+
     id="pokemon-card"
     class="pokemon-card"
     [ngClass]="formService.formState.type()">
@@ -114,4 +115,14 @@
         </p>
     </section>
     <div></div>
+</div> -->
+
+<div class="relative w-[450px] h-[630px]">
+    <img class="absolute w-full h-auto top-0 left-0"
+        src="./assets/water-basic.png" alt="Card Background">
+    <section class="absolute top-[12.64%] left-[11.7%] w-[76.1%] h-auto">
+        <img class="w-full h-auto"
+            [src]="formService.formState.characterImage()" alt="Character Image">
+    </section>
+    <!-- Add other elements here and position them with Tailwind's absolute positioning utilities as needed -->
 </div>
