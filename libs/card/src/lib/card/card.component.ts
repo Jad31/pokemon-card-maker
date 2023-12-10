@@ -11,7 +11,14 @@ import {
   ViewEncapsulation,
   inject,
 } from '@angular/core';
-import { FormService } from '@pokemon-card-maker/form';
+import { MatCheckboxChange } from '@angular/material/checkbox';
+import { DomSanitizer } from '@angular/platform-browser';
+import { ActivatedRoute, Router } from '@angular/router';
+import {
+  Form,
+  FormFieldChangeEventTypes,
+  FormService,
+} from '@pokemon-card-maker/form';
 import { ResizeTextDirective } from '@pokemon-card-maker/resize-text';
 
 @Component({
@@ -32,4 +39,32 @@ import { ResizeTextDirective } from '@pokemon-card-maker/resize-text';
 })
 export class CardComponent {
   formService = inject(FormService);
+  sanitizer = inject(DomSanitizer);
+  router = inject(Router);
+  activatedRoute = inject(ActivatedRoute);
+  formFieldChange(event: FormFieldChangeEventTypes, key: keyof Form) {
+    if (event instanceof Event) {
+      const target = event.target;
+      if (
+        target instanceof HTMLInputElement ||
+        target instanceof HTMLTextAreaElement
+      ) {
+        this.formService.formState[key].set(target.value as never);
+        this.router.navigate([], {
+          queryParams: {
+            ...this.router.parseUrl(this.router.url).queryParams,
+            [key]: this.formService.formState[key](),
+          },
+        });
+      }
+    } else if (event instanceof MatCheckboxChange) {
+      this.formService.formState[key].set(event.checked as never);
+      this.router.navigate([], {
+        queryParams: {
+          ...this.router.parseUrl(this.router.url).queryParams,
+          [key]: this.formService.formState[key](),
+        },
+      });
+    }
+  }
 }
