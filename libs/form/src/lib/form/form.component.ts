@@ -11,10 +11,10 @@ import {
   inject,
 } from '@angular/core';
 import { ReactiveFormsModule } from '@angular/forms';
-import { MatCheckboxChange } from '@angular/material/checkbox';
 import { DomSanitizer } from '@angular/platform-browser';
 import { ActivatedRoute, Router } from '@angular/router';
 import { DownloadCardComponent } from '@pokemon-card-maker/download-card';
+import { Store } from '@pokemon-card-maker/store';
 import {
   ImageCroppedEvent,
   ImageCropperModule,
@@ -42,15 +42,19 @@ import { Form, FormFieldChangeEventTypes } from './form.types';
 })
 export class FormComponent {
   formService = inject(FormService);
+  store = inject(Store);
   sanitizer = inject(DomSanitizer);
   router = inject(Router);
   activatedRoute = inject(ActivatedRoute);
   step = 0;
   imageUrl = '';
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   imageChangedEvent: any = '';
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   croppedImage: any = '';
 
   constructor() {
+    this.store.updateFormStateFromQueryParams(this.activatedRoute);
     this.formService.updateFormStateFromQueryParams(this.activatedRoute);
   }
 
@@ -61,22 +65,14 @@ export class FormComponent {
         target instanceof HTMLInputElement ||
         target instanceof HTMLTextAreaElement
       ) {
-        this.formService.formState[key].set(target.value as never);
+        this.store.updateState(key, target.value as never);
         this.router.navigate([], {
           queryParams: {
             ...this.router.parseUrl(this.router.url).queryParams,
-            [key]: this.formService.formState[key](),
+            [key]: this.store[key](),
           },
         });
       }
-    } else if (event instanceof MatCheckboxChange) {
-      this.formService.formState[key].set(event.checked as never);
-      this.router.navigate([], {
-        queryParams: {
-          ...this.router.parseUrl(this.router.url).queryParams,
-          [key]: this.formService.formState[key](),
-        },
-      });
     }
   }
 
@@ -99,18 +95,7 @@ export class FormComponent {
     });
   }
 
-  setStep(index: number) {
-    this.step = index;
-  }
-
-  nextStep() {
-    this.step++;
-  }
-
-  prevStep() {
-    this.step--;
-  }
-
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   fileChangeEvent(event: any): void {
     if (event) {
       this.imageChangedEvent = event;
@@ -125,6 +110,7 @@ export class FormComponent {
       // event.blob can be used to upload the cropped image
     }
   }
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
   imageLoaded(image: LoadedImage) {
     // show cropper
   }

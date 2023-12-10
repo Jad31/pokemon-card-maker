@@ -19,7 +19,8 @@
       "@pokemon-card-maker/download-card": ["libs/download-card/src/index.ts"],
       "@pokemon-card-maker/form": ["libs/form/src/index.ts"],
       "@pokemon-card-maker/header": ["libs/header/src/index.ts"],
-      "@pokemon-card-maker/resize-text": ["libs/resize-text/src/index.ts"]
+      "@pokemon-card-maker/resize-text": ["libs/resize-text/src/index.ts"],
+      "@pokemon-card-maker/store": ["libs/store/src/index.ts"]
     }
   },
   "exclude": ["node_modules", "tmp"]

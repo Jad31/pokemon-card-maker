@@ -1,4 +1,5 @@
 import {
+  JsonPipe,
   LowerCasePipe,
   NgClass,
   NgForOf,
@@ -10,6 +11,7 @@ import { CardComponent } from '@pokemon-card-maker/card';
 import { FormComponent, FormService } from '@pokemon-card-maker/form';
 import { HeaderComponent } from '@pokemon-card-maker/header';
 import { ResizeTextDirective } from '@pokemon-card-maker/resize-text';
+import { Store } from '@pokemon-card-maker/store';
 
 @Component({
   standalone: true,
@@ -23,6 +25,7 @@ import { ResizeTextDirective } from '@pokemon-card-maker/resize-text';
     ResizeTextDirective,
     HeaderComponent,
     CardComponent,
+    JsonPipe,
   ],
   selector: 'pokemon-card-maker-root',
   templateUrl: './app.component.html',
@@ -31,4 +34,5 @@ import { ResizeTextDirective } from '@pokemon-card-maker/resize-text';
 })
 export class AppComponent {
   formService = inject(FormService);
+  store = inject(Store);
 }

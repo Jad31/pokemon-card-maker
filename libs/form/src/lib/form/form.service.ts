@@ -1,6 +1,6 @@
 import { Injectable, WritableSignal } from '@angular/core';
-import { Form, formInitialState } from './form.types';
 import { ActivatedRoute } from '@angular/router';
+import { Form, formInitialState } from './form.types';
 
 @Injectable({
   providedIn: 'root',
@@ -27,6 +27,7 @@ export class FormService {
   formState = formInitialState;
 
   updateFormStateFromQueryParams(route: ActivatedRoute) {
+    console.log('updateFormStateFromQueryParams from service');
     return route.queryParamMap.subscribe((params) => {
       // Loop through all the keys of formInitialState
       return Object.keys(formInitialState).forEach((key) => {

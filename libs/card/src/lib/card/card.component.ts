@@ -11,7 +11,6 @@ import {
   ViewEncapsulation,
   inject,
 } from '@angular/core';
-import { MatCheckboxChange } from '@angular/material/checkbox';
 import { DomSanitizer } from '@angular/platform-browser';
 import { ActivatedRoute, Router } from '@angular/router';
 import {
@@ -57,14 +56,6 @@ export class CardComponent {
           },
         });
       }
-    } else if (event instanceof MatCheckboxChange) {
-      this.formService.formState[key].set(event.checked as never);
-      this.router.navigate([], {
-        queryParams: {
-          ...this.router.parseUrl(this.router.url).queryParams,
-          [key]: this.formService.formState[key](),
-        },
-      });
     }
   }
 }
