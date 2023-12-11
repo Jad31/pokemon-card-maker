@@ -1,135 +1,89 @@
-<!-- <div
-
-    id="pokemon-card"
-    class="pokemon-card"
-    [ngClass]="formService.formState.type()">
-    <section class="title-row">
-        <p class="rarity">{{ formService.formState.stage() }}</p>
-        <h1 class="name" pokemonCardMakerResizeText>
-            {{ formService.formState.name() }}
-        </h1>
-        <p class="health">{{ formService.formState.health() }} TJM</p>
-        <img
-            class="element-icon"
-            ngSrc="./assets/bashroom-{{
-                formService.formState.iconType() | lowercase
-              }}-icon.png"
-            width="25"
-            height="25" />
-    </section>
-
-    <div class="character-img-background">
-        <section class="character-img">
-            <img [attr.src]="formService.formState.characterImage()" />
-        </section>
-    </div>
-
-    <section class="character-meta">
-        <p>{{ formService.formState.upperText() }}</p>
-    </section>
-
-    <section class="character-ability">
-        <span class="ability-cost">
-            @for ( cost of formService.abilityCostOptions ; track $index) {
-            @if ($index < formService.formState.abilityOneCost().length) {
-            <img
-                ngSrc="assets/{{
-            formService.formState.abilityOneCost()[$index] | lowercase
-          }}-icon.png"
-                width="30"
-                height="30" />
-
-            }
-            }
-        </span>
-        <span class="ability-description">
-            <span class="ability-name">{{
-                formService.formState.abilityOneName()
-                }}</span>
-            <p>
-                {{ formService.formState.abilityOneDescription() }}
-            </p>
-        </span>
-        @if (formService.formState.isAbilityOneDamageActive()) {
-        <p class="ability-damage">
-            {{ formService.formState.abilityOneDamage() }}
-        </p>
-        }
-    </section>
-    <section class="character-ability">
-        <span class="ability-cost">
-            @for ( cost of formService.abilityCostOptions ; track $index) {
-            @if ($index < formService.formState.abilityTwoCost().length) {
-            <img
-                ngSrc="assets/{{
-            formService.formState.abilityTwoCost()[$index] | lowercase
-          }}-icon.png"
-                width="30"
-                height="30" />
-
-            }
-            }
-        </span>
-        <span class="ability-description">
-            <span class="ability-name">{{
-                formService.formState.abilityTwoName()
-                }}</span>
-            <p>
-                {{ formService.formState.abilityTwoDescription() }}
-            </p>
-        </span>
-        <p class="ability-damage">
-            {{ formService.formState.abilityTwoDamage() }}
-        </p>
-    </section>
-
-    <section class="character-stats">
-        <span class="character-stat">
-            <p>location</p>
-            <p>{{ formService.formState.location() }}</p>
-        </span>
-        <span class="character-stat">
-            <p>work environment</p>
-            <p>{{ formService.formState.workEnvironment() }}</p>
-        </span>
-        <span class="character-stat">
-            <p>availability</p>
-            <p>{{ formService.formState.availability() }}</p>
-        </span>
-    </section>
-
-    <section class="character-description-background">
-        <div class="character-description">
-            <p>
-                {{ formService.formState.lowerText() }}
-            </p>
-        </div>
-    </section>
-
-    <section class="card-details">
-        <p class="artist">{{ formService.formState.illustrator() }}</p>
-        <p class="company">{{ formService.formState.company() }}</p>
-        <p class="collector-card-number">
-            {{ formService.formState.cardNumber() }}/{{
-            formService.maxCardNumber }}
-        </p>
-    </section>
-    <div></div>
-</div> -->
-
 <div class="relative w-[450px] h-[630px]">
     <img class="absolute w-full h-auto top-0 left-0"
         src="./assets/water-basic.png" alt="Card Background">
-    <div class="absolute top-[3.9%] left-[8.9%]">
-        <input type="text"
-            class="input input-bordered w-full max-w-xs bg-input" #name
-            [value]="formService.formState.name()"
-            (input)="formFieldChange($event, 'name')" /> </div>
-    <div class="absolute top-[12.64%] left-[11.7%] w-[76.1%] h-auto">
-        @if (formService.formState.characterImage()) {
-        <img class="w-full h-auto"
-            [src]="formService.formState.characterImage()" alt="Character Image">
-        }
+    <div class="absolute w-full h-full top-0 left-0">
+        <div class="absolute top-[3.9%] left-[8.9%] h-[3.3%] w-[20%]">
+            <input type="text"
+                class="absolute input p-0 h-full w-full"
+                [value]="store.stage()"
+                (input)="formFieldChange($event, 'stage')" />
+        </div>
+        <div class="absolute top-[7%] left-[8.9%] h-[4.2%] w-[54%]">
+            <input type="text"
+                class="absolute input h-full w-full"
+                [value]="store.name()"
+                (input)="formFieldChange($event, 'name')" />
+        </div>
+        <div class="absolute top-[7%] left-[63.4%] h-[4.2%] w-[19.8%]">
+            <input type="text"
+                class="absolute input h-full w-full"
+                [value]="store.health()"
+                (input)="formFieldChange($event, 'health')" />
+        </div>
+        <div
+            class="absolute inline-block pointer top-[7%] left-[83.4%] h-[4.2%] w-[19.8%]">
+            <div class="relative rounded-full">
+                <img
+                    ngSrc="./assets/bashroom-{{
+                        store.iconType() | lowercase
+                      }}-icon.png"
+                    alt="Icon Type"
+                    width="26"
+                    height="26">
+            </div>
+
+        </div>
+        <div class="absolute top-[12.64%] left-[11.7%] w-[76.1%] h-auto">
+            @if (store.characterImage()) {
+            <img class="w-full h-auto"
+                ngsSrc="store.characterImage()"
+                alt="Character Image">
+            }
+        </div>
+        <div class="absolute top-[53.7%] left-[13.9%] h-[3%] w-[71.9%]">
+            <input type="text"
+                class="absolute input h-full w-full"
+                [value]="store.upperText()"
+                (input)="formFieldChange($event, 'upperText')" />
+        </div>
+        <div class="absolute top-[84.8%] left-[10.9%] h-[3%] w-[71.9%]">
+            <p>Location</p>
+        </div>
+        <div class="absolute top-[84.8%] left-[13.9%] h-[3%] w-[71.9%]">
+            <p>Work Environment</p>
+        </div>
+        <div class="absolute top-[84.8%] left-[13.9%] h-[3%] w-[71.9%]">
+            <p>Availabity</p>
+        </div>
+        <div class="absolute top-[58.7%] left-[13.9%] h-[3%] w-[71.9%]">
+            <input type="text"
+                class="absolute input h-full w-full"
+                [value]="store.location()"
+                (input)="formFieldChange($event, 'location')" />
+            <div class="absolute top-[88.8%] left-[8.5%] h-[5.6%] w-[81.7%]">
+                <textarea type="text"
+                    class="absolute text-[10.1361px] p-1 h-full w-full bg-transparent"
+                    [value]="store.lowerText()"
+                    (input)="formFieldChange($event, 'lowerText')"></textarea>
+            </div>
+            <div class="absolute top-[94.5%] left-[5.4%] h-[2.2%] w-[22%]">
+                <input type="text"
+                    class="absolute input h-full w-full"
+                    [value]="store.illustrator()"
+                    (input)="formFieldChange($event, 'illustrator')" />
+            </div>
+            <div class="absolute top-[94.5%] left-[27.5%] h-[2.2%] w-[53.8%]">
+                <input type="text"
+                    class="absolute input h-full w-full"
+                    [value]="store.company()"
+                    (input)="formFieldChange($event, 'company')" />
+            </div>
+            <div class="absolute top-[94.5%] left-[81.2%] h-[2.2%] w-[14%]">
+                <input type="text"
+                    class="absolute input h-full w-full"
+                    [value]="store.cardNumber()"
+                    (input)="formFieldChange($event, 'cardNumber')" />
+            </div>
+            <!-- Add other elements here and position them with Tailwind's absolute positioning utilities as needed -->
+        </div>
     </div>
-    <!-- Add other elements here and position them with Tailwind's absolute positioning utilities as needed -->
-</div>

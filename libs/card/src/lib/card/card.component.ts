@@ -13,12 +13,9 @@ import {
 } from '@angular/core';
 import { DomSanitizer } from '@angular/platform-browser';
 import { ActivatedRoute, Router } from '@angular/router';
-import {
-  Form,
-  FormFieldChangeEventTypes,
-  FormService,
-} from '@pokemon-card-maker/form';
+import { Form, FormFieldChangeEventTypes } from '@pokemon-card-maker/form';
 import { ResizeTextDirective } from '@pokemon-card-maker/resize-text';
+import { Store } from '@pokemon-card-maker/store';
 
 @Component({
   selector: 'pokemon-card-maker-card',
@@ -37,7 +34,7 @@ import { ResizeTextDirective } from '@pokemon-card-maker/resize-text';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class CardComponent {
-  formService = inject(FormService);
+  store = inject(Store);
   sanitizer = inject(DomSanitizer);
   router = inject(Router);
   activatedRoute = inject(ActivatedRoute);
@@ -48,11 +45,11 @@ export class CardComponent {
         target instanceof HTMLInputElement ||
         target instanceof HTMLTextAreaElement
       ) {
-        this.formService.formState[key].set(target.value as never);
+        this.store.updateState(key, target.value as never);
         this.router.navigate([], {
           queryParams: {
             ...this.router.parseUrl(this.router.url).queryParams,
-            [key]: this.formService.formState[key](),
+            [key]: this.store[key](),
           },
         });
       }

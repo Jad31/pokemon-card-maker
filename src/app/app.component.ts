@@ -6,12 +6,11 @@ import {
   NgIf,
   NgOptimizedImage,
 } from '@angular/common';
-import { ChangeDetectionStrategy, Component, inject } from '@angular/core';
+import { ChangeDetectionStrategy, Component } from '@angular/core';
 import { CardComponent } from '@pokemon-card-maker/card';
-import { FormComponent, FormService } from '@pokemon-card-maker/form';
+import { FormComponent } from '@pokemon-card-maker/form';
 import { HeaderComponent } from '@pokemon-card-maker/header';
 import { ResizeTextDirective } from '@pokemon-card-maker/resize-text';
-import { Store } from '@pokemon-card-maker/store';
 
 @Component({
   standalone: true,
@@ -32,7 +31,4 @@ import { Store } from '@pokemon-card-maker/store';
   styleUrls: ['./app.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class AppComponent {
-  formService = inject(FormService);
-  store = inject(Store);
-}
+export class AppComponent {}

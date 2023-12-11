@@ -18,7 +18,7 @@
         </label>
         <input type="text"
           class="input input-bordered w-full max-w-xs bg-input" #name
-          [value]="formService.formState.name()"
+          [value]="store.name()"
           (input)="formFieldChange($event, 'name')" />
 
         <label class="label">
@@ -38,14 +38,14 @@
         </label>
         <input type="text"
           class="input input-bordered w-full max-w-xs bg-input" #stage
-          [value]="formService.formState.stage()"
+          [value]="store.stage()"
           (input)="formFieldChange($event, 'stage')" />
         <label class="label">
           <span class="label-text">Health</span>
         </label>
         <input type="text"
           class="input input-bordered w-full max-w-xs bg-input" #health
-          [value]="formService.formState.health()"
+          [value]="store.health()"
           (input)="formFieldChange($event, 'health')" />
       </div>
     </div>
@@ -93,7 +93,7 @@
         </label>
         <input type="text"
           class="input input-bordered w-full max-w-xs bg-input" #abilityOneName
-          [value]="formService.formState.abilityOneName()"
+          [value]="store.abilityOneName()"
           (input)="formFieldChange($event, 'abilityOneName')" />
 
         <label class="label">
@@ -102,7 +102,7 @@
         <textarea
           class="textarea textarea-bordered w-full max-w-xs bg-input"
           #abilityOneDescription
-          [value]="formService.formState.abilityOneDescription()"
+          [value]="store.abilityOneDescription()"
           (input)="formFieldChange($event, 'abilityOneDescription')"></textarea>
 
         <label class="label">
@@ -128,13 +128,13 @@
           <div
             class="flex h-[25px] p-1 flew-wrap items-center justify-start">
             <p>Cost:</p>
-            @for (cost of formService.formState.abilityOneCost(); track
+            @for (cost of store.abilityOneCost(); track
             $index)
             {
             <img
               class="m-1.5 w-[25px] hover:cursor-pointer"
               ngSrc="assets/{{
-                   formService.formState.abilityOneCost()[$index] | lowercase
+                   store.abilityOneCost()[$index] | lowercase
                  }}-icon.png"
               (click)="removeAbilityOneCost($index)"
               width="25"
@@ -161,7 +161,7 @@
         </label>
         <input type="text"
           class="input input-bordered w-full max-w-xs bg-input" #abilityTwoName
-          [value]="formService.formState.abilityTwoName()"
+          [value]="store.abilityTwoName()"
           (input)="formFieldChange($event, 'abilityTwoName')" />
 
         <label class="label">
@@ -170,7 +170,7 @@
         <textarea
           class="textarea textarea-bordered w-full max-w-xs bg-input"
           #abilityTwoDescription
-          [value]="formService.formState.abilityTwoDescription()"
+          [value]="store.abilityTwoDescription()"
           (input)="formFieldChange($event, 'abilityTwoDescription')"></textarea>
 
         <label class="label">
@@ -196,13 +196,13 @@
           <div
             class="flex h-[25px] p-1 flew-wrap items-center justify-start">
             <p>Cost:</p>
-            @for (cost of formService.formState.abilityTwoCost(); track
+            @for (cost of store.abilityTwoCost(); track
             $index)
             {
             <img
               class="m-1.5 w-[25px] hover:cursor-pointer"
               ngSrc="assets/{{
-                     formService.formState.abilityTwoCost()[$index] | lowercase
+                     store.abilityTwoCost()[$index] | lowercase
                    }}-icon.png"
               (click)="removeAbilityTwoCost($index)"
               width="25"
@@ -229,21 +229,21 @@
         </label>
         <input type="text"
           class="input input-bordered w-full max-w-xs bg-input" #location
-          [value]="formService.formState.location()"
+          [value]="store.location()"
           (input)="formFieldChange($event, 'location')" />
         <label class="label">
           <span class="label-text">Work Environment</span>
         </label>
         <input type="text"
           class="input input-bordered w-full max-w-xs bg-input" #workEnvironment
-          [value]="formService.formState.workEnvironment()"
+          [value]="store.workEnvironment()"
           (input)="formFieldChange($event, 'workEnvironment')" />
         <label class="label">
           <span class="label-text">Availability</span>
         </label>
         <input type="text"
           class="input input-bordered w-full max-w-xs bg-input" #availability
-          [value]="formService.formState.availability()"
+          [value]="store.availability()"
           (input)="formFieldChange($event, 'availability')" />
       </div>
     </div>
@@ -263,35 +263,35 @@
         </label>
         <input type="text"
           class="input input-bordered w-full max-w-xs bg-input" #upperText
-          [value]="formService.formState.upperText()"
+          [value]="store.upperText()"
           (input)="formFieldChange($event, 'upperText')" />
         <label class="label">
           <span class="label-text">Lower Text</span>
         </label>
-        <input type="text"
-          class="input input-bordered w-full max-w-xs bg-input" #lowerText
-          [value]="formService.formState.lowerText()"
-          (input)="formFieldChange($event, 'lowerText')" />
+        <textarea type="text"
+          class="textarea w-full max-w-xs bg-input" #lowerText
+          [value]="store.lowerText()"
+          (input)="formFieldChange($event, 'lowerText')"></textarea>
         <label class="label">
           <span class="label-text">Illustrator</span>
         </label>
         <input type="text"
           class="input input-bordered w-full max-w-xs bg-input" #illustrator
-          [value]="formService.formState.illustrator()"
+          [value]="store.illustrator()"
           (input)="formFieldChange($event, 'illustrator')" />
         <label class="label">
           <span class="label-text">Company</span>
         </label>
         <input type="text"
           class="input input-bordered w-full max-w-xs bg-input" #company
-          [value]="formService.formState.company()"
+          [value]="store.company()"
           (input)="formFieldChange($event, 'company')" />
         <label class="label">
           <span class="label-text">Card Number</span>
         </label>
         <input type="text"
           class="input input-bordered w-full max-w-xs bg-input" #cardNumber
-          [value]="formService.formState.cardNumber()"
+          [value]="store.cardNumber()"
           (input)="formFieldChange($event, 'cardNumber')" />
       </div>
 
